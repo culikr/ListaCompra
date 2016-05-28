@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">Email</string>
+    <string name="telefone">Telefone</string>
+    <string name="mensagem">Mensagem</string>
+    <string name="nome_da_lista">Nome da lista</string>
+    <string name="email_a_enviara_lista">Email a enviara lista</string>
+    <string name="telefone_a_enviar_a_lista">Telefone a enviar a lista</string>
+    <string name="mensagem_de_texto_da_lista">Mensagem de texto da lista</string>
+    <string name="produto">Produto</string>
+    <string name="quantidade">Quantidade</string>
+
+
+    <string name="nome">Nome</string>
+    <string name="pre_o">Preço</string>
+    <string name="local_barato">Local Barato</string>
+
+</resources>

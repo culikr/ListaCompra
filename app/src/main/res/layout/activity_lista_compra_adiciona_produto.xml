@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".ui.Lista_compra_adiciona_produto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/produto"
+        android:id="@+id/textView8" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/quantidade"
+        android:id="@+id/textView9" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText4" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:baselineAligned="false"
+        android:longClickable="false"
+        android:gravity="center_vertical|center|center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:id="@+id/lista_produto_cancelar"
+            android:onClick="cancelarEdicaoLista" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salva/Sai"
+            android:id="@+id/lista_produto_salvasai"
+            android:onClick="SalvaProdutoCompra" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salva/Continua"
+            android:id="@+id/lista_produto_salva_continua"
+            android:onClick="SalvaProdutoCompra" />
+    </LinearLayout>
+
+</LinearLayout>
