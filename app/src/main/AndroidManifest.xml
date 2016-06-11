@@ -6,12 +6,27 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
     <application
+        android:name="FaceApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+<!--
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,10 +34,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        -->
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.Cadastro_Produto" />
         <activity android:name=".ui.ListaProduto" />
         <activity android:name=".ui.Cadastra_Lista" />
-        <activity android:name=".ui.Lista_compra_adiciona_produto"></activity>
+        <activity android:name=".ui.Lista_compra_adiciona_produto"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId"   android:value = "@string/facebook_app_id"/>
     </application>
 
 </manifest>
