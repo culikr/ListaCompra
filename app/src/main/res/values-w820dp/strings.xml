@@ -14,5 +14,10 @@
     <string name="nome">Nome</string>
     <string name="pre_o">Preço</string>
     <string name="local_barato">Local Barato</string>
+    <string name="bt_contato">Contato</string>
+    <string name="txt_copyright">Luiz Rafael Culik Guimaraes</string>
+    <string name="title_activity_about">Sobre</string>
+    <string name="txt_email">culikr@gmail.com</string>
+    <string name="txt_email_assunto">Lista Comora mobile</string>
 
 </resources>

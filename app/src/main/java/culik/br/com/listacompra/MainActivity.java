@@ -1,40 +1,34 @@
 package culik.br.com.listacompra;
 
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-
-
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
 import culik.br.com.listacompra.fragment.ListaCompraDetalheFragment;
 import culik.br.com.listacompra.fragment.ListaCompraFragment;
-import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
-import culik.br.com.listacompra.utils.database.ProdutoDataSource;
 import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.ListaProduto;
-import culik.br.com.listacompra.utils.model.Produto;
 
 /**
  * Created by LUIZ on 11/05/2016.
  */
-public class MainActivity extends AppCompatActivity implements ListaCompraFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements ListaCompraFragment.OnFragmentInteractionListener {
 
 
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ListaCompraFragment e = new ListaCompraFragment();
-        ArrayList<Produto> pr;
-        ArrayList<ListaCompra> lc ;
+       // ArrayList<Produto> pr;
+        // ArrayList<ListaCompra> lc ;
         super.onCreate(savedInstanceState);
-        ProdutoDataSource p = new ProdutoDataSource(this);
+        //ProdutoDataSource p = new ProdutoDataSource(this);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(toolbar);
+        /*
         p.open();
         pr = p.getAllProduto();
         if ( pr.size() ==0 ) {
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
 
         }
         c.close();
-
+       */
         setContentView(R.layout.activity_main);
         if (savedInstanceState != null)
             return;
