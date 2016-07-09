@@ -8,12 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import culik.br.com.listacompra.R;
-import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.ListaProduto;
-import culik.br.com.listacompra.utils.model.Produto;
 
 /**
  * Created by LUIZ on 07/05/2016.

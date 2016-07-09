@@ -1,32 +1,31 @@
  package culik.br.com.listacompra.fragment;
 
-import android.app.Activity;
+ import android.app.Activity;
+ import android.app.Fragment;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.telephony.SmsManager;
+ import android.view.ContextMenu;
+ import android.view.LayoutInflater;
+ import android.view.Menu;
+ import android.view.MenuInflater;
+ import android.view.MenuItem;
+ import android.view.View;
+ import android.view.ViewGroup;
+ import android.widget.AdapterView;
+ import android.widget.ListView;
+ import android.widget.TextView;
+ import android.widget.Toast;
 
-import android.content.Intent;
-import android.app.Fragment;
-import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+ import java.util.ArrayList;
 
-import java.util.ArrayList;
-
-import culik.br.com.listacompra.R;
-import culik.br.com.listacompra.ui.Cadastra_Lista;
-import culik.br.com.listacompra.ui.ListaProduto;
-import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
-import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
-import culik.br.com.listacompra.utils.database.ListaProdutoDataSource;
-import culik.br.com.listacompra.utils.model.ListaCompra;
+ import culik.br.com.listacompra.R;
+ import culik.br.com.listacompra.ui.Cadastra_Lista;
+ import culik.br.com.listacompra.ui.ListaProduto;
+ import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
+ import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
+ import culik.br.com.listacompra.utils.database.ListaProdutoDataSource;
+ import culik.br.com.listacompra.utils.model.ListaCompra;
 
 /**
  * Created by LUIZ on 10/05/2016.

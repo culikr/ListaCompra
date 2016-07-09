@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import culik.br.com.listacompra.R;
-import culik.br.com.listacompra.utils.model.ListaProduto;
 import culik.br.com.listacompra.utils.model.Produto;
 
 /**

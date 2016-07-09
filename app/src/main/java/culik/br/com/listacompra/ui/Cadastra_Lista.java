@@ -1,15 +1,14 @@
 package culik.br.com.listacompra.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
-import culik.br.com.listacompra.utils.database.ProdutoDataSource;
 import culik.br.com.listacompra.utils.model.ListaCompra;
 
 public class Cadastra_Lista extends AppCompatActivity {

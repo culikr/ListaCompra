@@ -1,9 +1,9 @@
 package culik.br.com.listacompra.fragment;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.ui.Lista_compra_adiciona_produto;
-import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
 import culik.br.com.listacompra.utils.adapter.ListaCompraProdutoAdapter;
 import culik.br.com.listacompra.utils.database.ListaProdutoDataSource;
 import culik.br.com.listacompra.utils.model.ListaCompra;

@@ -9,10 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import culik.br.com.listacompra.MainActivity;
 import culik.br.com.listacompra.utils.model.ListaProduto;
-
-import static culik.br.com.listacompra.utils.database.MySQLiteHelper.*;
 
 
 /**

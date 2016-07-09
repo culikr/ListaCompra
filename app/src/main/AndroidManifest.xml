@@ -46,6 +46,10 @@
 
         <activity android:name=".ui.SplashScreen"></activity>
         <activity android:name=".ui.ActivityAbout"></activity>
+        
+        <provider
+            android:authorities="culik.br.com.listacompra.provider"
+            android:name=".provider.ProdutoProvider"></provider>
     </application>
 
 </manifest>

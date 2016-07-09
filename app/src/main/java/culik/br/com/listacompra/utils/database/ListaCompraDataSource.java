@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import culik.br.com.listacompra.utils.model.ListaCompra;
-import culik.br.com.listacompra.utils.model.Produto;
 
 /**
  * Created by LUIZ on 03/05/2016.
