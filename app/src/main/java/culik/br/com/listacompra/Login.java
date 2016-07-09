@@ -54,8 +54,7 @@ public class Login extends Activity {
        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
                super.onActivityResult(requestCode, resultCode, data);
                callbackManager.onActivityResult(requestCode, resultCode, data);
-        Log.d("sair",Integer.toString(requestCode));
-        Log.d("sair",Integer.toString(resultCode));
+
            }
 
     public void ChamaPrincipal(){
