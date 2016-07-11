@@ -12,15 +12,27 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import culik.br.com.listacompra.utils.utils.DetectaConexao;
+import culik.br.com.listacompra.utils.utils.DialogoAlerta;
+
 public class Login extends Activity {
 
     private CallbackManager callbackManager;
-
+    Boolean temInternet = false;
+    // Classe de detecçao de conexao
+    DetectaConexao cd;
+    DialogoAlerta alerta = new DialogoAlerta();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        temInternet = cd.isConnectingToInternet();
+        if (!temInternet){
+            alerta.showAlertDialog(Login.this,"Erro de conexao na internet","Conecte a internet para usar",false);
+            return;
+        }
 
         callbackManager = CallbackManager.Factory.create();
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
