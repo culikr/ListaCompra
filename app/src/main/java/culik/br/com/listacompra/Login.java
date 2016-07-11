@@ -57,7 +57,7 @@ public class Login extends Activity {
 
            }
 
-    public void ChamaPrincipal(){
+    private void ChamaPrincipal(){
         Intent i = new Intent(Login.this, MainActivity.class);
         startActivity(i);
     }

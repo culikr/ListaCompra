@@ -1,10 +1,10 @@
 package culik.br.com.listacompra;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import culik.br.com.listacompra.fragment.ListaCompraDetalheFragment;
@@ -15,7 +15,7 @@ import culik.br.com.listacompra.utils.model.ListaProduto;
 /**
  * Created by LUIZ on 11/05/2016.
  */
-public class MainActivity extends ActionBarActivity implements ListaCompraFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements ListaCompraFragment.OnFragmentInteractionListener {
 
 
     private Toolbar toolbar;
@@ -26,6 +26,7 @@ public class MainActivity extends ActionBarActivity implements ListaCompraFragme
         // ArrayList<ListaCompra> lc ;
         super.onCreate(savedInstanceState);
         //ProdutoDataSource p = new ProdutoDataSource(this);
+        setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);
         /*
@@ -51,12 +52,12 @@ public class MainActivity extends ActionBarActivity implements ListaCompraFragme
         }
         c.close();
        */
-        setContentView(R.layout.activity_main);
+
         if (savedInstanceState != null)
             return;
         ListaCompraFragment listaCompraFragment = new ListaCompraFragment();
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager =  getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -80,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements ListaCompraFragme
 
     @Override
     public void onListaSelected(ListaCompra prod) {
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

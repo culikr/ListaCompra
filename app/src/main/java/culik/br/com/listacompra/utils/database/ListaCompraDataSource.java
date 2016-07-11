@@ -59,7 +59,7 @@ public class ListaCompraDataSource {
     }
 
     public ArrayList<ListaCompra> getAllProduto() {
-        ArrayList<ListaCompra> comments = new ArrayList<ListaCompra>();
+        ArrayList<ListaCompra> comments = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_LISTACOMPRA,
                 allColumns, null, null, null, null, null);

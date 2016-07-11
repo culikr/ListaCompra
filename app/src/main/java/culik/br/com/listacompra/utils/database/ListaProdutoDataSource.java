@@ -78,7 +78,7 @@ public class ListaProdutoDataSource {
     }
 
     public ArrayList<ListaProduto> getAllListaProduto( long idLista ) {
-        ArrayList<ListaProduto> comments = new ArrayList<ListaProduto>();
+        ArrayList<ListaProduto> comments = new ArrayList<>();
         String query = "Select a."+ MySQLiteHelper.COLUMN_IDPRODUTO+",a."+
                 MySQLiteHelper.COLUMN_IDLISTA+",a."+ MySQLiteHelper.COLUMN_IDITEM+",a."+
                 MySQLiteHelper.COLUMN_DQUANT+",b." +MySQLiteHelper.COLUMN_SNOME +

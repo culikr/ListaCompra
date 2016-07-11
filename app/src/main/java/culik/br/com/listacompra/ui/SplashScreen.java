@@ -7,10 +7,9 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-import culik.br.com.listacompra.MainActivity;
+import culik.br.com.listacompra.Login;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.database.ProdutoDataSource;
-import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.Produto;
 
 public class SplashScreen extends Activity {
@@ -33,7 +32,7 @@ public class SplashScreen extends Activity {
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayList<Produto> pr;
-            ArrayList<ListaCompra> lc ;
+            //ArrayList<ListaCompra> lc ;
             ProdutoDataSource p = new ProdutoDataSource(SplashScreen.this);
             p.open();
             pr = p.getAllProduto();
@@ -60,7 +59,7 @@ public class SplashScreen extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            Intent i = new Intent(SplashScreen.this, MainActivity.class);
+            Intent i = new Intent(SplashScreen.this, Login.class);
             startActivity(i);
 
             // close this activity

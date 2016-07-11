@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.model.ListaProduto;
 
@@ -51,11 +53,7 @@ public class ListaCompraProdutoAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.two_col_rol, null);
-            holder = new ViewHolder();
-            holder.text1 = (TextView) convertView
-                    .findViewById(R.id.TextView01);
-            holder.text2 = (TextView) convertView
-                    .findViewById(R.id.TextView02);
+            holder = new ViewHolder(convertView);
 
             convertView.setTag(holder);
         } else {
@@ -70,8 +68,11 @@ public class ListaCompraProdutoAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView text1;
-        TextView text2;
+        @BindView(R.id.TextView01) TextView text1;
+        @BindView(R.id.TextView02) TextView text2;
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
 }

@@ -21,9 +21,9 @@ import culik.br.com.listacompra.utils.database.MySQLiteHelper;
 public class ProdutoProvider extends ContentProvider {
 
         private MySQLiteHelper database;
-        static final String PROVIDER_NAME = "culik.br.com.listacompra.Provider.Produtos";
+        private static final String PROVIDER_NAME = "culik.br.com.listacompra.Provider.Produtos";
         private static final String BASE_PATH = "produto";
-        static final String URL = "content://" + PROVIDER_NAME + "/"+BASE_PATH;
+        private static final String URL = "content://" + PROVIDER_NAME + "/"+BASE_PATH;
         static final Uri CONTENT_URI = Uri.parse(URL);
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
             + "/todos";

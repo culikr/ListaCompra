@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
     <application
         android:name=".FaceApplication"
         android:allowBackup="true"
@@ -18,7 +24,7 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".Login">
+        <activity android:name=".ui.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,13 +49,14 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <activity android:name=".Login"/>
 
-        <activity android:name=".ui.SplashScreen"></activity>
-        <activity android:name=".ui.ActivityAbout"></activity>
+        <!--<activity android:name=".ui.SplashScreen"></activity> !-->
+        <activity android:name=".ui.ActivityAbout"/>
         
         <provider
             android:authorities="culik.br.com.listacompra.provider"
-            android:name=".provider.ProdutoProvider"></provider>
+            android:name=".provider.ProdutoProvider"/>
     </application>
 
 </manifest>

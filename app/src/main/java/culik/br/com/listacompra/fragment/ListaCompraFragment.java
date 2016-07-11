@@ -1,9 +1,9 @@
  package culik.br.com.listacompra.fragment;
 
  import android.app.Activity;
- import android.app.Fragment;
  import android.content.Intent;
  import android.os.Bundle;
+ import android.support.v4.app.Fragment;
  import android.telephony.SmsManager;
  import android.view.ContextMenu;
  import android.view.LayoutInflater;
@@ -20,6 +20,7 @@
  import java.util.ArrayList;
 
  import culik.br.com.listacompra.R;
+ import culik.br.com.listacompra.ui.ActivityAbout;
  import culik.br.com.listacompra.ui.Cadastra_Lista;
  import culik.br.com.listacompra.ui.ListaProduto;
  import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
@@ -28,7 +29,8 @@
  import culik.br.com.listacompra.utils.model.ListaCompra;
 
 /**
- * Created by LUIZ on 10/05/2016.
+ *  ListaCompraFragment
+ *  Cria um fragmento de lista compra
  */
 public class ListaCompraFragment extends Fragment {
     OnFragmentInteractionListener listener;
@@ -44,7 +46,7 @@ public class ListaCompraFragment extends Fragment {
     private ListaCompra listaCompraSelecionado;
 
     public ListaCompraFragment() {
-        return;
+
     }
 
     @Override
@@ -56,9 +58,7 @@ public class ListaCompraFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_lista_compra_list, null);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_lista_compra_list, null);
     }
 
     @Override
@@ -137,6 +137,10 @@ public class ListaCompraFragment extends Fragment {
                 i.putExtra("ledicao",0);
 
                 getActivity().startActivityForResult(i, CADASTRAR_LISTA);
+                return true;
+            case R.id.about:
+                i = new Intent(getActivity(), ActivityAbout.class);
+                getActivity().startActivity(i);
                 return true;
 
 
@@ -218,7 +222,7 @@ public class ListaCompraFragment extends Fragment {
                 culik.br.com.listacompra.utils.model.ListaProduto c1;
                 for ( int i =0; i<c.size();i++){
                     c1=c.get(i);
-                    builder.append(c1.getsNome()+"\r\n");
+                    builder.append(c1.getsNome()).append("\r\n");
                 }
             }
 
@@ -284,7 +288,8 @@ public class ListaCompraFragment extends Fragment {
             } else {
                 Toast.makeText(getActivity(), "Cadastro cancelado!", Toast.LENGTH_SHORT).show();
             }
-            if (requestCode == EDITAR_LISTA) {
+        }
+        else if (requestCode == EDITAR_LISTA) {
                 if (resultCode == Activity.RESULT_OK) {
                     ListaCompra listas = (ListaCompra) data.getSerializableExtra("lista");
                     int posicao = data.getIntExtra("posicao", -1);
@@ -295,9 +300,9 @@ public class ListaCompraFragment extends Fragment {
                     Toast.makeText(getActivity(), "Alteracao cancelado!", Toast.LENGTH_SHORT).show();
                 }
 
-            }
-
         }
+
+
     }
 
     private void EnviaWhatsapp() {
