@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/salva_config" android:icon="@drawable/save" android:title="Salva" app:showAsAction="ifRoom" />
+    <item android:id="@+id/cancela_config" android:icon="@drawable/button_close_icon" android:title="Cancela" app:showAsAction="ifRoom" />
+
+</menu>

@@ -29,7 +29,10 @@ public class ProdutoDataSource {
         database = dbHelper.getWritableDatabase();
     }
 
-    public boolean isOpen() { return  dbHelper.getReadableDatabase().isOpen();}
+    public boolean isOpen() {
+        return dbHelper.getReadableDatabase().isOpen();
+    }
+
     public void close() {
         dbHelper.close();
     }
@@ -42,19 +45,20 @@ public class ProdutoDataSource {
                 + " = " + id, null);
     }
 
-    public void insereProduto( Produto p){
+    public void insereProduto(Produto p) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_SNOME,p.getsNome());
+        values.put(MySQLiteHelper.COLUMN_SNOME, p.getsNome());
 
-        if ( !p.getsLocal().isEmpty())
-           values.put(MySQLiteHelper.COLUMN_LOCAL,p.getsLocal());
+        if (!p.getsLocal().isEmpty())
+            values.put(MySQLiteHelper.COLUMN_LOCAL, p.getsLocal());
 
-        if ( p.getPreco() > 0)
-           values.put(MySQLiteHelper.COLUMN_PRECO,p.getPreco());
+        if (p.getPreco() > 0)
+            values.put(MySQLiteHelper.COLUMN_PRECO, p.getPreco());
 
         database.insert(MySQLiteHelper.TABLE_PRODUTO, null,
                 values);
     }
+
     public Produto pegaDadosCampeonatoProduto(long insertID) {
         Cursor cursor = database.query(MySQLiteHelper.TABLE_PRODUTO,
                 allColumns, MySQLiteHelper.COLUMN_IDPRODUTO + " = " + insertID, null,
@@ -83,7 +87,7 @@ public class ProdutoDataSource {
     }
 
     private Produto cursorToProduto(Cursor cursor) {
-        return new Produto(cursor.getLong(0),cursor.getString(1));
+        return new Produto(cursor.getLong(0), cursor.getString(1));
     }
 
 

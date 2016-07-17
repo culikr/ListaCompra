@@ -3,4 +3,5 @@
 <item android:id="@+id/adiciona" android:icon="@drawable/button_add_icon" android:title="Adicionar" app:showAsAction="ifRoom" />
 <item android:id="@+id/produto" android:title="Produto" app:showAsAction="always" />
 <item android:id="@+id/about" android:icon="@drawable/button_info_icon" android:title="Sobre"  app:showAsAction="always"/>
+    <item android:id="@+id/settings" android:icon="@drawable/settings_icon" android:title="Configuracao"  app:showAsAction="always"/>
 </menu>

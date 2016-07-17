@@ -2,8 +2,6 @@ package culik.br.com.listacompra;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -57,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
             return;
         ListaCompraFragment listaCompraFragment = new ListaCompraFragment();
 
-        FragmentManager fragmentManager =  getSupportFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager =  getSupportFragmentManager();
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.add(R.id.framelayout_left, listaCompraFragment);
 
@@ -81,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
 
     @Override
     public void onListaSelected(ListaCompra prod) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         int containerViewId = R.id.framelayout_left;
 

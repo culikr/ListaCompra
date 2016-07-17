@@ -22,6 +22,7 @@
  import culik.br.com.listacompra.R;
  import culik.br.com.listacompra.ui.ActivityAbout;
  import culik.br.com.listacompra.ui.Cadastra_Lista;
+ import culik.br.com.listacompra.ui.Configuracao;
  import culik.br.com.listacompra.ui.ListaProduto;
  import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
  import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
@@ -67,10 +68,10 @@ public class ListaCompraFragment extends Fragment {
         listaCompra = (ListView) view.findViewById(R.id.lista_produto);
         TextView te = (TextView) view.findViewById(R.id.TextView01);
 
-        ld = new ListaCompraDataSource(getActivity());
+        ld = new ListaCompraDataSource(getActivity().getBaseContext());
         ld.open();
         lc = ld.getAllProduto();
-        ef = new ListaCompraAdapter(getActivity(), lc);
+        ef = new ListaCompraAdapter(getActivity().getBaseContext(), lc);
         listaCompra.setAdapter(ef);
         registerForContextMenu(listaCompra);
         listaCompra.setOnItemClickListener(onListaCompraListViewItemClickListener);
@@ -142,7 +143,10 @@ public class ListaCompraFragment extends Fragment {
                 i = new Intent(getActivity(), ActivityAbout.class);
                 getActivity().startActivity(i);
                 return true;
-
+            case R.id.settings:
+                i = new Intent(getActivity(), Configuracao.class);
+                getActivity().startActivity(i);
+                return true;
 
 
         }

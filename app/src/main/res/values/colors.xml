@@ -6,6 +6,9 @@
     <color name="white">#FFFFFF</color>
     <color name="blue_btn_bg_color">#AEDEF4</color>
     <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+    <color name="red_btn_bg_color">#F00000</color>
+    <color name="red_btn_bg_pressed_color">#E30022</color>
     <color name="ColorPrimary">#FF5722</color>
     <color name="ColorPrimaryDark">#E64A19</color>
+    <color name="purple_vivo">#a0009f</color>
 </resources>

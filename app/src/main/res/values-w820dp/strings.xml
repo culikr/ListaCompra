@@ -19,5 +19,10 @@
     <string name="title_activity_about">Sobre</string>
     <string name="txt_email">culikr@gmail.com</string>
     <string name="txt_email_assunto">Lista Comora mobile</string>
+    <string name="activity_settings_notification_section_title">Configurações</string>
+    <string name="cabecalho_mensagem">Cabecalho mensagem</string>
+    <string name="rodape_mensagem">Rodape mensagem</string>
+    <string name="cabecalho_email">Cabecalho Email</string>
+    <string name="rodape_email">Rodape email</string>
 
 </resources>

@@ -27,10 +27,10 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        cd = new DetectaConexao(this);
         temInternet = cd.isConnectingToInternet();
-        if (!temInternet){
-            alerta.showAlertDialog(Login.this,"Erro de conexao na internet","Conecte a internet para usar",false);
+        if (!temInternet) {
+            alerta.showAlertDialog(Login.this, "Erro de conexao na internet", "Conecte a internet para usar", false);
             return;
         }
 
@@ -48,7 +48,7 @@ public class Login extends Activity {
                 }
 
                 @Override
-                public void onCancel(   ) {
+                public void onCancel() {
                     finish();
                 }
 
@@ -57,19 +57,19 @@ public class Login extends Activity {
                     Log.d("Erro", error.toString());
                 }
             });
-        }
-        else{
+        } else {
             ChamaPrincipal();
         }
     }
+
     @Override
-       protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-               super.onActivityResult(requestCode, resultCode, data);
-               callbackManager.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
 
-           }
+    }
 
-    private void ChamaPrincipal(){
+    private void ChamaPrincipal() {
         Intent i = new Intent(Login.this, MainActivity.class);
         startActivity(i);
     }
