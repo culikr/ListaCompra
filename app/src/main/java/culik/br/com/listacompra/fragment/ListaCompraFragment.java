@@ -181,7 +181,13 @@ public class ListaCompraFragment extends Fragment {
                 EnviarEmail();
 
                 break;
+
             }
+            case R.id.menuEnviarWhatsApp:
+            {
+                EnviaWhatsapp();
+            }
+
             default:
                 return false;
         }
@@ -317,7 +323,7 @@ public class ListaCompraFragment extends Fragment {
             smsManager.sendTextMessage(listaCompraSelecionado.getsTelefone(), null, "ola", null, null);
             Toast.makeText(getActivity(), "Mensagem enviada", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Envio do SMS falhou, tente novamente.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Envio do whatsappjus falhou, tente novamente.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
