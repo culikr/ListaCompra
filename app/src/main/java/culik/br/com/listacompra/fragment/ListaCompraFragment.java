@@ -71,6 +71,11 @@ public class ListaCompraFragment extends Fragment {
         ld = new ListaCompraDataSource(getActivity().getBaseContext());
         ld.open();
         lc = ld.getAllProduto();
+        if (lc.size() == 0) {
+            te.setText("Lista Vazia, incluia acessando o botao adicionar");
+          //  Toast.makeText(getActivity(), "Lista Vazia!", Toast.LENGTH_SHORT).show();
+           // lc.add(teste);
+        }
         ef = new ListaCompraAdapter(getActivity().getBaseContext(), lc);
         listaCompra.setAdapter(ef);
         registerForContextMenu(listaCompra);
