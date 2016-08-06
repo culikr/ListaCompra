@@ -18,19 +18,16 @@ import culik.br.com.listacompra.utils.utils.DialogoAlerta;
 public class Login extends Activity {
 
     private CallbackManager callbackManager;
-    Boolean temInternet = false;
-    // Classe de detecçao de conexao
-    DetectaConexao cd;
-    DialogoAlerta alerta = new DialogoAlerta();
+    private final DialogoAlerta alerta = new DialogoAlerta();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        cd = new DetectaConexao(this);
-        temInternet = cd.isConnectingToInternet();
+        DetectaConexao cd = new DetectaConexao(this);
+        Boolean temInternet = cd.isConnectingToInternet();
         if (!temInternet) {
-            alerta.showAlertDialog(Login.this, "Erro de conexao na internet", "Conecte a internet para usar", false);
+            alerta.showAlertDialog(Login.this);
             return;
         }
 
@@ -54,7 +51,7 @@ public class Login extends Activity {
 
                 @Override
                 public void onError(FacebookException error) {
-                    Log.d("Erro", error.toString());
+                    Log.d("CURSO", error.toString());
                 }
             });
         } else {

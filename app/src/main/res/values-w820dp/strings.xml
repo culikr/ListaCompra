@@ -24,5 +24,7 @@
     <string name="rodape_mensagem">Rodape mensagem</string>
     <string name="cabecalho_email">Cabecalho Email</string>
     <string name="rodape_email">Rodape email</string>
+    <string name="envia_mercado_automatico">Envia Mercado Automatico</string>
+    <string name="envia_produto_automatico">Envia Produto Automatico</string>
 
 </resources>

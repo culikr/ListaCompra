@@ -2,32 +2,38 @@ package culik.br.com.listacompra.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
 import culik.br.com.listacompra.utils.model.ListaCompra;
 
-public class Cadastra_Lista extends AppCompatActivity {
+public class Cadastra_Lista extends Activity {
     private ListaCompraDataSource pr ;
-    private ListaCompra listaCompraSelecionado;
-    private EditText edNome,edTelefone,edEmail,edMensagem;
+    @BindView(R.id.edNome) 
+     EditText edNome;
+    @BindView(R.id.edTelefone) 
+     EditText edTelefone;
+    @BindView(R.id.edEmail) 
+    EditText edEmail;
+    @BindView(R.id.edMensagem) 
+     EditText edMensagem;
     private int posicao ;
     private int lEdicao = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insere_altera_lista_compra);
+        ButterKnife.bind(this);
         pr = new ListaCompraDataSource(this);
         pr.open();
-        edNome = (EditText) findViewById(R.id.edNome);
-        edEmail = (EditText) findViewById(R.id.edEmail);
-        edTelefone = (EditText) findViewById(R.id.edTelefone);
-        edMensagem = (EditText) findViewById(R.id.edMensagem);
-        listaCompraSelecionado = (ListaCompra) this.getIntent().getSerializableExtra("lista");
+
+        ListaCompra listaCompraSelecionado = (ListaCompra) this.getIntent().getSerializableExtra("lista");
         posicao = this.getIntent().getIntExtra("posicao",-1);
         lEdicao = this.getIntent().getIntExtra("ledicao",-1);
         if (listaCompraSelecionado != null)

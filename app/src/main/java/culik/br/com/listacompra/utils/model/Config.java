@@ -6,17 +6,23 @@ import java.io.Serializable;
  * Created by LUIZ on 11/07/2016.
  */
 public class Config  implements Serializable {
-    boolean useFaceBook;
-    boolean sendEmail;
-    boolean sendWhats;
-    boolean sendSms;
-    String  cabecSms;
-    String  rodapeSMS;
-    String  cabecEmail;
-    String  rodapeEmail;
+    private static final long serialVersionUID = -1;
+    private boolean useFaceBook;
+    private boolean sendEmail;
+    private boolean sendWhats;
+    private boolean sendSms;
+    private boolean sendProdutoAuto;
+    private boolean sendMercadoAutop;
 
 
-    public Config(boolean useFaceBook, boolean sendEmail, boolean sendWhats, boolean sendSms, String cabecSms, String rodapeSMS, String cabecEmail, String rodapeEmail) {
+    private String  cabecSms;
+    private String  rodapeSMS;
+    private String  cabecEmail;
+    private String  rodapeEmail;
+
+
+    public Config(boolean useFaceBook, boolean sendEmail, boolean sendWhats, boolean sendSms, String cabecSms, String rodapeSMS, String cabecEmail, String rodapeEmail,boolean sendProdutoAuto,
+            boolean sendMercadoAutop) {
         this.useFaceBook = useFaceBook;
         this.sendEmail = sendEmail;
         this.sendWhats = sendWhats;
@@ -25,6 +31,8 @@ public class Config  implements Serializable {
         this.rodapeSMS = rodapeSMS;
         this.cabecEmail = cabecEmail;
         this.rodapeEmail = rodapeEmail;
+        this.sendProdutoAuto = sendProdutoAuto;
+        this.sendMercadoAutop = sendMercadoAutop;
     }
 
     public String getRodapeSMS() {
@@ -95,4 +103,21 @@ public class Config  implements Serializable {
     public void setSendSms(boolean sendSms) {
         this.sendSms = sendSms;
     }
+
+    public boolean isSendProdutoAuto() {
+        return sendProdutoAuto;
+    }
+
+    public void setSendProdutoAuto(boolean sendProdutoAuto) {
+        this.sendProdutoAuto = sendProdutoAuto;
+    }
+
+    public boolean isSendMercadoAutop() {
+        return sendMercadoAutop;
+    }
+
+    public void setSendMercadoAutop(boolean sendMercadoAutop) {
+        this.sendMercadoAutop = sendMercadoAutop;
+    }
+
 }

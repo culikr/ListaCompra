@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by LUIZ on 03/05/2016.
  */
 public class Produto implements Serializable {
+    private static final long serialVersionUID = -1;
     /**
      * Id do produto
      */
@@ -73,9 +74,10 @@ public class Produto implements Serializable {
     }
 
     public Produto() {}
-    public Produto( long id, String nome ){
+    public Produto( long id, String nome,double val ){
         this.sNome= nome;
         this.idProduto= id;
+        this.preco=val;
     }
     @Override
     public String toString()

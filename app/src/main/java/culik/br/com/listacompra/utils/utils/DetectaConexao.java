@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
  * Created by LUIZ on 10/07/2016.
  */
 public class DetectaConexao {
-    private Context _context;
+    private final Context _context;
 
     public DetectaConexao(Context context){
         this._context = context;

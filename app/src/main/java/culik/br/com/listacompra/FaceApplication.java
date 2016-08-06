@@ -1,26 +1,54 @@
 package culik.br.com.listacompra;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.facebook.FacebookSdk;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import culik.br.com.listacompra.interfaces.MyListaProdutoInterface;
 import culik.br.com.listacompra.utils.model.Config;
+import culik.br.com.listacompra.utils.utils.LoggingInteceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by LUIZ on 10/06/2016.
  */
 public class FaceApplication extends Application {
-    public Config config;
+    private Config config;
     private SharedPreferences mSharedPreferences;
+    private MyListaProdutoInterface serviceProduto;
+    private static Context mContext;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
         FacebookSdk.sdkInitialize(getApplicationContext());
         mSharedPreferences = getSharedPreferences("ListaCompra", MODE_PRIVATE);
         config =getConfig();
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor( new LoggingInteceptor() ).build();
+        OkHttpClient client2 = new OkHttpClient.Builder().addInterceptor( logging).build();
+        Gson gson = new GsonBuilder().create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.25.9:8080/ListaProdutos/rest/produto/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client2)
+                .build();
+
+        serviceProduto = retrofit.create(MyListaProdutoInterface.class);
+
     }
 
     public Config getConfig() {
@@ -33,8 +61,10 @@ public class FaceApplication extends Application {
             String  rodapeSMS=  mSharedPreferences.getString(  "rodapeSMS"  , "Obrigado(a)");
             String  cabecEmail=  mSharedPreferences.getString( "cabecEmail", "Por favor traga os seguintes items do mercado");
             String  rodapeEmail=  mSharedPreferences.getString("rodapeEmail", "Obrigado(a)");
+            boolean sendProdutoAuto  = mSharedPreferences.getBoolean("sendProdutoAuto",false);
+            boolean sendMercadoAutop = mSharedPreferences.getBoolean("sendProdutoAuto",false);
 
-            config = new Config(useFaceBook, sendEmail, sendWhats, sendSms,cabecSms,rodapeSMS,cabecEmail,rodapeEmail);
+            config = new Config(useFaceBook, sendEmail, sendWhats, sendSms,cabecSms,rodapeSMS,cabecEmail,rodapeEmail,sendProdutoAuto,sendMercadoAutop);
         }
         return config;
     }
@@ -51,8 +81,17 @@ public class FaceApplication extends Application {
         e.putString("rodapeSMS"  ,config.getRodapeSMS());
         e.putString("cabecEmail", config.getCabecEmail());
         e.putString("rodapeEmail",config.getRodapeEmail());
+        e.putBoolean("",config.isSendProdutoAuto());
+        e.putBoolean("",config.isSendMercadoAutop());
         e.commit();
 
+    }
+
+    public  MyListaProdutoInterface getService(){
+        return serviceProduto;
+    }
+    public static Context getContext(){
+        return mContext;
     }
 }
 

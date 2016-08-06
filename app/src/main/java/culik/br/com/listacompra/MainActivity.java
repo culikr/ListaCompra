@@ -1,9 +1,11 @@
 package culik.br.com.listacompra;
 
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.widget.Toolbar;
 
 import culik.br.com.listacompra.fragment.ListaCompraDetalheFragment;
 import culik.br.com.listacompra.fragment.ListaCompraFragment;
@@ -13,10 +15,8 @@ import culik.br.com.listacompra.utils.model.ListaProduto;
 /**
  * Created by LUIZ on 11/05/2016.
  */
-public class MainActivity extends AppCompatActivity implements ListaCompraFragment.OnFragmentInteractionListener {
+public class MainActivity extends Activity implements ListaCompraFragment.OnFragmentInteractionListener {
 
-
-    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ListaCompraFragment e = new ListaCompraFragment();
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
         super.onCreate(savedInstanceState);
         //ProdutoDataSource p = new ProdutoDataSource(this);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
-        setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setActionBar(toolbar);
         /*
         p.open();
         pr = p.getAllProduto();
@@ -53,15 +53,18 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
 
         if (savedInstanceState != null)
             return;
+
+
         ListaCompraFragment listaCompraFragment = new ListaCompraFragment();
 
-        android.support.v4.app.FragmentManager fragmentManager =  getSupportFragmentManager();
+        FragmentManager fragmentManager =  getFragmentManager();
 
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.add(R.id.framelayout_left, listaCompraFragment);
 
         if (findViewById(R.id.framelayout_right) != null) {
+            boolean mTwoPane = true;
             ListaProduto pro = new ListaProduto();
        
 
@@ -79,9 +82,9 @@ public class MainActivity extends AppCompatActivity implements ListaCompraFragme
 
     @Override
     public void onListaSelected(ListaCompra prod) {
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
 
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         int containerViewId = R.id.framelayout_left;
 

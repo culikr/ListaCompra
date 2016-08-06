@@ -7,7 +7,7 @@ package culik.br.com.listacompra.ui;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,10 +15,7 @@ import android.widget.TextView;
 import culik.br.com.listacompra.R;
 
 
-public class ActivityAbout extends AppCompatActivity {
-
-    private TextView lblVersao;
-    private Button btContato;
+public class ActivityAbout extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +24,8 @@ public class ActivityAbout extends AppCompatActivity {
 
         setTitle(getString(R.string.title_activity_about));
 
-        lblVersao = (TextView) findViewById(R.id.lbl_versao);
-        btContato = (Button) findViewById(R.id.bt_contato);
+        TextView lblVersao = (TextView) findViewById(R.id.lbl_versao);
+        Button btContato = (Button) findViewById(R.id.bt_contato);
 
         try {
             lblVersao.setText(getString(R.string.txt_versao) + " " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName);

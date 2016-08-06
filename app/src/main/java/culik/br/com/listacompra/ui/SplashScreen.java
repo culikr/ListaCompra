@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import culik.br.com.listacompra.Login;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.database.ProdutoDataSource;
+import culik.br.com.listacompra.utils.model.ListaProdutos;
 import culik.br.com.listacompra.utils.model.Produto;
+import culik.br.com.listacompra.utils.model.Produtos;
+import culik.br.com.listacompra.utils.service.RetrofitService;
 
 public class SplashScreen extends Activity {
 
@@ -26,12 +29,11 @@ public class SplashScreen extends Activity {
     }
 
     private class CarregaDadosAsync extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {super.onPreExecute();}
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayList<Produto> pr;
+            RetrofitService serv = new RetrofitService();
             //ArrayList<ListaCompra> lc ;
             ProdutoDataSource p = new ProdutoDataSource(SplashScreen.this);
             p.open();
@@ -50,6 +52,53 @@ public class SplashScreen extends Activity {
                 p.insereProduto(new Produto("Mostarda", "Zafari", 1.57));
                 p.insereProduto(new Produto("Sazon", "Rissul", 1.57));
                 p.insereProduto(new Produto("Banana", "Zafari", 1.57));
+
+            } else {
+                ListaProdutos l = new ListaProdutos();
+                ArrayList<Produtos> ar = new ArrayList<>();
+                int i;
+                pr = p.getAllProduto();
+                for ( i =0; i<pr.size();i++)
+                {
+                    ar.add(new Produtos(0,pr.get(i).getsNome(),pr.get(i).getPreco()));
+                }
+                l.setProduto(ar);
+
+                
+                /* Colocar em classe retrofit Service
+                Call<ListaProdutos> call = service.enviaProdutos(l);
+
+                call.enqueue(new Callback<ListaProdutos>() {
+                    @Override
+                    public void onResponse(Call<ListaProdutos> call, Response<ListaProdutos> response) {
+                        int statusCode = response.code();
+                        Log.d("retro",response.toString());
+                        ListaProdutos user = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ListaProdutos> call, Throwable t) {
+
+                    }
+                });
+
+                Call<ListaProdutos> call = service.pegaProdutos();
+                call.enqueue(new Callback<ListaProdutos>() {
+                    @Override
+                    public void onResponse(Call<ListaProdutos> call, Response<ListaProdutos> response) {
+                        int statusCode = response.code();
+                        Log.d("retro",response.toString());
+                        ListaProdutos user = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ListaProdutos> call, Throwable t) {
+
+                    }
+                });
+                */
+         //       l = serv.pegaProdutos();
+
 
             }
             p.close();

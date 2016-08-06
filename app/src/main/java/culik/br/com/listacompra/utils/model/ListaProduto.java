@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by LUIZ on 03/05/2016.
  */
 public class ListaProduto implements Serializable {
+    private static final long serialVersionUID = -1;
     /**
      * Id da lista de compra
      */

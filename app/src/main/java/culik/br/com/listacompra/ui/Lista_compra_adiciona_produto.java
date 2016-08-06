@@ -2,7 +2,7 @@ package culik.br.com.listacompra.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -18,7 +18,7 @@ import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.ListaProduto;
 import culik.br.com.listacompra.utils.model.Produto;
 
-public class Lista_compra_adiciona_produto extends AppCompatActivity {
+public class Lista_compra_adiciona_produto extends Activity {
 
     private ProdutoDataSource ld;
     private ListaProdutoDataSource lp;

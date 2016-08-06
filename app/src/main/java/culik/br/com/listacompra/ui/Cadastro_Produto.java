@@ -2,7 +2,7 @@ package culik.br.com.listacompra.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,13 +10,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.OnClick;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.database.ProdutoDataSource;
 import culik.br.com.listacompra.utils.model.Produto;
 
-public class Cadastro_Produto extends AppCompatActivity {
+public class Cadastro_Produto extends Activity {
 
     private ProdutoDataSource pr ;
+    private static final int REQUISITAR_CODBAR = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -87,6 +89,23 @@ public class Cadastro_Produto extends AppCompatActivity {
     private void cancelarEdicao(){
         Toast.makeText(this,"Edicao cancelada!", Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    @OnClick(R.id.button)
+    public void buscaCodBar( View v ){
+        Intent i = new Intent(this,LeituraCodBarras.class);
+        startActivityForResult(i,REQUISITAR_CODBAR);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUISITAR_CODBAR) {
+            if (resultCode == Activity.RESULT_OK) {
+                EditText te = (EditText)findViewById(R.id.editText4);
+                te.setText(data.getStringExtra("nome"));
+
+            }
+
+            }
     }
 
 }

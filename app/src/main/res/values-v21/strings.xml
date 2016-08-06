@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="envia_mercado_automatico">Envia Mercado Automatico</string>
+    <string name="envia_produto_automatico">Envia Produto Automatico</string>
+</resources>

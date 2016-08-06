@@ -1,33 +1,33 @@
  package culik.br.com.listacompra.fragment;
 
  import android.app.Activity;
- import android.content.Intent;
- import android.os.Bundle;
- import android.support.v4.app.Fragment;
- import android.telephony.SmsManager;
- import android.view.ContextMenu;
- import android.view.LayoutInflater;
- import android.view.Menu;
- import android.view.MenuInflater;
- import android.view.MenuItem;
- import android.view.View;
- import android.view.ViewGroup;
- import android.widget.AdapterView;
- import android.widget.ListView;
- import android.widget.TextView;
- import android.widget.Toast;
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 
- import culik.br.com.listacompra.R;
- import culik.br.com.listacompra.ui.ActivityAbout;
- import culik.br.com.listacompra.ui.Cadastra_Lista;
- import culik.br.com.listacompra.ui.Configuracao;
- import culik.br.com.listacompra.ui.ListaProduto;
- import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
- import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
- import culik.br.com.listacompra.utils.database.ListaProdutoDataSource;
- import culik.br.com.listacompra.utils.model.ListaCompra;
+import culik.br.com.listacompra.R;
+import culik.br.com.listacompra.ui.ActivityAbout;
+import culik.br.com.listacompra.ui.Cadastra_Lista;
+import culik.br.com.listacompra.ui.Configuracao;
+import culik.br.com.listacompra.ui.ListaProduto;
+import culik.br.com.listacompra.utils.adapter.ListaCompraAdapter;
+import culik.br.com.listacompra.utils.database.ListaCompraDataSource;
+import culik.br.com.listacompra.utils.database.ListaProdutoDataSource;
+import culik.br.com.listacompra.utils.model.ListaCompra;
 
 /**
  *  ListaCompraFragment
@@ -71,6 +71,11 @@ public class ListaCompraFragment extends Fragment {
         ld = new ListaCompraDataSource(getActivity().getBaseContext());
         ld.open();
         lc = ld.getAllProduto();
+        if (lc.size() == 0) {
+            te.setText("Lista Vazia, incluia acessando o botao adicionar");
+          //  Toast.makeText(getActivity(), "Lista Vazia!", Toast.LENGTH_SHORT).show();
+           // lc.add(teste);
+        }
         ef = new ListaCompraAdapter(getActivity().getBaseContext(), lc);
         listaCompra.setAdapter(ef);
         registerForContextMenu(listaCompra);
@@ -181,6 +186,11 @@ public class ListaCompraFragment extends Fragment {
                 EnviarEmail();
 
                 break;
+
+            }
+            case R.id.menuEnviarWhatsApp:
+            {
+                EnviaWhatsapp();
             }
             default:
                 return false;
@@ -317,7 +327,7 @@ public class ListaCompraFragment extends Fragment {
             smsManager.sendTextMessage(listaCompraSelecionado.getsTelefone(), null, "ola", null, null);
             Toast.makeText(getActivity(), "Mensagem enviada", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Envio do SMS falhou, tente novamente.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Envio do whatsappjus falhou, tente novamente.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }

@@ -13,24 +13,19 @@ public class DialogoAlerta {
     /**
      * Função para mostrar um simples dialog de alerta
      * @param context - contexto da aplicação
-     * @param title - titulo do dialog de alerta
-     * @param message - mensagem de alerta
-     * @param status - sucesso/falha
-     *               - null se nao quiser usar icone
      * */
-    public void showAlertDialog(Context context, String title, String message,
-                                Boolean status) {
+    public void showAlertDialog(Context context) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 
         // Seta o titulo do dialogo
-        alertDialog.setTitle(title);
+        alertDialog.setTitle("Erro de conexao na internet");
 
         // Seta a mensagem do dialogo
-        alertDialog.setMessage(message);
+        alertDialog.setMessage("Conecte a internet para usar");
 
-        if(status != null)
+        if((Boolean) false != null)
             // Seta o icone do dialogo
-            alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
+            alertDialog.setIcon(false ? R.drawable.success : R.drawable.fail);
 
         // Seta o botao ok
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {

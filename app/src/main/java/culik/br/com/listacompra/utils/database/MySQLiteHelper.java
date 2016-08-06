@@ -12,11 +12,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_PRODUTO = "produto";
     public static final String TABLE_LISTACOMPRA = "listacompra";
     public static final String TABLE_LISTA = "lista";
+    public static final String TABLE_MERCADO ="mercado";
     //campos comuns
     public static final String COLUMN_SNOME="nome";
     public static final String COLUMN_IDPRODUTO="idproduto";
     public static final String COLUMN_IDITEM="iditem";
     public static final String COLUMN_IDLISTA="idlista";
+    public static final String COLUMN_IDMERCADO="idmercado";
+    
     //tabela listacompra
     public static final String COLUMN_DDATACAD="ddatacad";
     public static final String COLUMN_TELEFONE="telefone";
@@ -26,12 +29,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DQUANT="dquant";
     public static final String COLUMN_LOCAL="local";
     public static final String COLUMN_PRECO="preco";
+    // tabela mercado
+    public static final String COLUMN_LAT="lat";
+    public static final String COLUMN_LGN="lgn";
+    
+    
 
 
 
     private static final String DATABASE_NAME = "listaprod.db";
 
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_PRODUTO = "create table "
@@ -47,8 +55,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " text not null, "+ COLUMN_TELEFONE
             + " text , "+ COLUMN_EMAIL
             + " text , "+ COLUMN_DDATACAD
-            + " datetime ," +  COLUMN_MENSAGEM
-            + " text );";
+            + " datetime ," + COLUMN_IDMERCADO 
+            + " integer not null ," +  COLUMN_MENSAGEM
+            + " text , FOREIGN KEY(" + COLUMN_IDMERCADO + ") REFERENCES "+ TABLE_MERCADO + "( " + COLUMN_IDMERCADO +" ) ); ";
 
     private static final String DATABASE_CREATE_LISTA = "create table "
             + TABLE_LISTA + "(" + COLUMN_DQUANT
@@ -58,7 +67,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " integer primary key autoincrement, FOREIGN KEY(" + COLUMN_IDLISTA + ") REFERENCES "+ TABLE_LISTACOMPRA + "( " + COLUMN_IDLISTA +")"
             + ",FOREIGN KEY(" + COLUMN_IDPRODUTO + ") REFERENCES "+ TABLE_PRODUTO + "( " + COLUMN_IDPRODUTO +") );";
 
-
+    private static final String DATABASE_CREATE_MERCADO = " create table "
+            + TABLE_MERCADO + "(" + COLUMN_LGN 
+            +"  double, " + COLUMN_LAT
+            +"  double, " + COLUMN_IDMERCADO
+            + " integer primary key autoincrement," + COLUMN_SNOME
+            + " text );";
 
 
     public MySQLiteHelper(Context context) {
@@ -67,9 +81,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
+        database.execSQL(DATABASE_CREATE_MERCADO);
         database.execSQL(DATABASE_CREATE_PRODUTO);
         database.execSQL(DATABASE_CREATE_LISTA_COMPRA);
         database.execSQL(DATABASE_CREATE_LISTA);
+
 
     }
 
@@ -81,6 +97,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUTO);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LISTACOMPRA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LISTA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MERCADO);
        // db.execSQL("DROP TABLE IF EXISTS " + TABLE_PONTOS);
         onCreate(db);
 

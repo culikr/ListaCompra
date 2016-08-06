@@ -3,11 +3,11 @@ package culik.br.com.listacompra.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import culik.br.com.listacompra.utils.adapter.ListaProdutoAdapter;
 import culik.br.com.listacompra.utils.database.ProdutoDataSource;
 import culik.br.com.listacompra.utils.model.Produto;
 
-public class ListaProduto extends AppCompatActivity {
+public class ListaProduto extends Activity {
     private ProdutoDataSource pd;
     private ListView list;
     private ListaProdutoAdapter adap;
@@ -26,6 +26,8 @@ public class ListaProduto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produto);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setActionBar(toolbar);
         list = (ListView)findViewById(R.id.listView2);
         pd = new ProdutoDataSource( this );
         pd.open();

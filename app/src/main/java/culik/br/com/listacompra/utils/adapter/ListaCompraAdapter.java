@@ -1,6 +1,7 @@
 package culik.br.com.listacompra.utils.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,8 +67,8 @@ public class ListaCompraAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @BindView(R.id.TextView01) TextView text1;
-        @BindView(R.id.TextView02) TextView text2;
+        @Nullable @BindView(R.id.TextView01) TextView text1;
+        @Nullable @BindView(R.id.TextView02) TextView text2;
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

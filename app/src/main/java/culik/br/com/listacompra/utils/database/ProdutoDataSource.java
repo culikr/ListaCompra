@@ -19,7 +19,7 @@ public class ProdutoDataSource {
     private final MySQLiteHelper dbHelper;
 
     private final String[] allColumns = {MySQLiteHelper.COLUMN_IDPRODUTO,
-            MySQLiteHelper.COLUMN_SNOME};
+            MySQLiteHelper.COLUMN_SNOME,MySQLiteHelper.COLUMN_PRECO};
 
     public ProdutoDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -87,7 +87,7 @@ public class ProdutoDataSource {
     }
 
     private Produto cursorToProduto(Cursor cursor) {
-        return new Produto(cursor.getLong(0), cursor.getString(1));
+        return new Produto(cursor.getLong(0), cursor.getString(1),cursor.getDouble(2));
     }
 
 
