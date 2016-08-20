@@ -141,7 +141,7 @@ public class Cadastro_Produto extends Activity {
             if (requestCode == REQUISITAR_CODBAR) {
                 if (resultCode == Activity.RESULT_OK) {
                     //                  EditText te = (EditText) findViewById(R.id.editText4);
-                    te.setText(data.getStringExtra("nome"));
+                    te4.setText(data.getStringExtra("nome").toString());
 
                 }
 
