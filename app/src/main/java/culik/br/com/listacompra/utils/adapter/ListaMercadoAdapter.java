@@ -89,9 +89,9 @@ public class ListaMercadoAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        // holder.text1.setText(  Long.toString(listaCompra.get(position).getId()));
+         holder.text1.setText(  Long.toString(listaCompra.get(position).getId()));
 //        holder.text2.setText((int) listaCompra.get(position).getIdtime());
-        //   holder.text2.setText( listaCompra.get(position).getNome());
+           holder.text2.setText( listaCompra.get(position).getNome());
 
         return convertView;
     }

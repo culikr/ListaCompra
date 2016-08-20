@@ -21,6 +21,16 @@ public class  ListaCompra implements Serializable {
     private String sEmail;
     private String sTelefone;
 
+    public long getIdMercado() {
+        return idMercado;
+    }
+
+    public void setIdMercado(long idMercado) {
+        this.idMercado = idMercado;
+    }
+
+    private long idMercado;
+
     public String getsMensagem() {
         return sMensagem;
     }
@@ -64,12 +74,31 @@ public class  ListaCompra implements Serializable {
         this.sMensagem=mensagem;
 
     }
+    public ListaCompra(long idLista, String sNome, String dDataCad, String email, String telefone, String mensagem,long idmercado) {
+        this.sNome = sNome;
+        this.idLista = idLista;
+        this.dDataCad = dDataCad;
+        this.sEmail = email;
+        this.sTelefone=telefone;
+        this.sMensagem=mensagem;
+        this.idMercado=idmercado;
+
+    }
     public ListaCompra( String sNome, String dDataCad, String email, String telefone,String mensagem) {
         this.sNome = sNome;
         this.dDataCad = dDataCad;
         this.sEmail = email;
         this.sTelefone=telefone;
         this.sMensagem = mensagem;
+    }
+    public ListaCompra( String sNome, String dDataCad, String email, String telefone,String mensagem,long idmercado) {
+        this.sNome = sNome;
+        this.dDataCad = dDataCad;
+        this.sEmail = email;
+        this.sTelefone=telefone;
+        this.sMensagem = mensagem;
+        this.idMercado=idmercado;
+
     }
 
     public void setIdLista( long id ){

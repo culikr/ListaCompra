@@ -3,6 +3,7 @@ package culik.br.com.listacompra;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDex;
 
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
@@ -32,6 +33,7 @@ public class FaceApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         mSharedPreferences = getSharedPreferences("ListaCompra", MODE_PRIVATE);
         config =getConfig();
@@ -71,7 +73,7 @@ public class FaceApplication extends Application {
             String  cabecEmail=  mSharedPreferences.getString( "cabecEmail", "Por favor traga os seguintes items do mercado");
             String  rodapeEmail=  mSharedPreferences.getString("rodapeEmail", "Obrigado(a)");
             boolean sendProdutoAuto  = mSharedPreferences.getBoolean("sendProdutoAuto",false);
-            boolean sendMercadoAutop = mSharedPreferences.getBoolean("sendProdutoAuto",false);
+            boolean sendMercadoAutop = mSharedPreferences.getBoolean("sendMercadoAutop",false);
 
             config = new Config(useFaceBook, sendEmail, sendWhats, sendSms,cabecSms,rodapeSMS,cabecEmail,rodapeEmail,sendProdutoAuto,sendMercadoAutop);
         }
@@ -90,8 +92,8 @@ public class FaceApplication extends Application {
         e.putString("rodapeSMS"  ,config.getRodapeSMS());
         e.putString("cabecEmail", config.getCabecEmail());
         e.putString("rodapeEmail",config.getRodapeEmail());
-        e.putBoolean("",config.isSendProdutoAuto());
-        e.putBoolean("",config.isSendMercadoAutop());
+        e.putBoolean("sendProdutoAuto",config.isSendProdutoAuto());
+        e.putBoolean("sendMercadoAutop",config.isSendMercadoAutop());
         e.commit();
 
     }

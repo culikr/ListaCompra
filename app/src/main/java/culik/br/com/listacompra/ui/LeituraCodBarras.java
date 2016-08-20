@@ -28,8 +28,9 @@ public class LeituraCodBarras extends Activity implements ZXingScannerView.Resul
 
 
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.content_frame);
-        ArrayList<BarcodeFormat> formats = new ArrayList<BarcodeFormat>();
+        ArrayList<BarcodeFormat> formats = new ArrayList<>();
         formats.add(BarcodeFormat.EAN_13);
+        formats.add(BarcodeFormat.EAN_8);
         mScannerView = new ZXingScannerView(this);
         mScannerView.setFormats(formats);
         contentFrame.addView(mScannerView);

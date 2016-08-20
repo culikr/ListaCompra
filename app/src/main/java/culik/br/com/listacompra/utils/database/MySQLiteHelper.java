@@ -40,7 +40,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "listaprod.db";
 
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 11;
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_PRODUTO = "create table "
@@ -57,7 +57,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " text not null, "+ COLUMN_TELEFONE
             + " text , "+ COLUMN_EMAIL
             + " text , "+ COLUMN_DDATACAD
-            + " datetime ," + COLUMN_IDMERCADO 
+            + " datetime ," + COLUMN_IDMERCADO
             + " integer not null ," +  COLUMN_MENSAGEM
             + " text , FOREIGN KEY(" + COLUMN_IDMERCADO + ") REFERENCES "+ TABLE_MERCADO + "( " + COLUMN_IDMERCADO +" ) ); ";
 

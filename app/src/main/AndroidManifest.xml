@@ -45,6 +45,7 @@
         <activity android:name=".ui.Cadastra_Lista" />
         <activity android:name=".ui.Lista_compra_adiciona_produto" />
         <activity android:name=".ui.LeituraCodBarras" />
+        <activity android:name=".ui.ListaMercado"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

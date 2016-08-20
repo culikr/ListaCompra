@@ -23,7 +23,8 @@ public class ListaCompraDataSource {
             MySQLiteHelper.COLUMN_DDATACAD,
             MySQLiteHelper.COLUMN_EMAIL,
             MySQLiteHelper.COLUMN_TELEFONE,
-            MySQLiteHelper.COLUMN_MENSAGEM
+            MySQLiteHelper.COLUMN_MENSAGEM,
+            MySQLiteHelper.COLUMN_IDMERCADO
     };
 
     public ListaCompraDataSource(Context context) {
@@ -76,7 +77,7 @@ public class ListaCompraDataSource {
     }
 
     private ListaCompra cursorToListaCompra(Cursor cursor) {
-        return new ListaCompra(cursor.getLong(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+        return new ListaCompra(cursor.getLong(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getLong(6));
     }
 
     public long insereCompra(ListaCompra c){
@@ -94,6 +95,7 @@ public class ListaCompraDataSource {
 
         if (!c.getsMensagem().isEmpty())
             co.put( MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
+        co.put(MySQLiteHelper.COLUMN_IDMERCADO,c.getIdMercado());
 
         return database.insert(MySQLiteHelper.TABLE_LISTACOMPRA,null,co);
 
@@ -116,6 +118,7 @@ public class ListaCompraDataSource {
 
         if (!c.getsMensagem().isEmpty())
             co.put( MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
+        co.put(MySQLiteHelper.COLUMN_IDMERCADO,c.getIdMercado());
 
         database.update(MySQLiteHelper.TABLE_LISTACOMPRA,co, MySQLiteHelper.COLUMN_IDLISTA  + "=" + c.getIdLista(),null);
 

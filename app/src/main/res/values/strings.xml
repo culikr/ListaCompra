@@ -64,4 +64,5 @@
     <string name="codigo_de_barras">Codigo de barras</string>
     <string name="endereco">Endereco</string>
     <string name="procura">Procura</string>
+    <string name="mercados">Mercado</string>
 </resources>

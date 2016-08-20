@@ -66,6 +66,22 @@
         android:layout_weight="0.33"
         android:hint="@string/mensagem_de_texto_da_lista"  android:layout_marginTop="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mercados"
+        android:id="@+id/textView3"
+      />
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:inputType="text" />
+
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:weightSum="1"
