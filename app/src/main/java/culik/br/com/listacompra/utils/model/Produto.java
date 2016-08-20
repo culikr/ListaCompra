@@ -10,37 +10,41 @@ public class Produto implements Serializable {
     /**
      * Id do produto
      */
-    private long idProduto;
+    private long id;
 
     /**
      * Nome do produto
      */
-    private String sNome;
+    private String nome;
 
-    private String sLocal;
+    private long idMercado;
     private double preco;
+    private String codbar;
 
-    public Produto(long idProduto, String sNome, String sLocal, double preco) {
-        this.idProduto = idProduto;
-        this.sNome = sNome;
-        this.sLocal = sLocal;
+
+    public Produto(long id, String nome, long idMercado, double preco, String codbar) {
+        this.id = id;
+        this.nome = nome;
+        this.idMercado = idMercado;
+        this.preco = preco;
+        this.codbar = codbar;
+    }
+
+    public Produto(String nome, long idMercado, double preco, String codbar) {
+        this.codbar = codbar;
+
+        this.nome = nome;
+        this.idMercado = idMercado;
         this.preco = preco;
     }
 
-    public Produto( String sNome, String sLocal, double preco) {
+    public long getIdMercado() {
 
-        this.sNome = sNome;
-        this.sLocal = sLocal;
-        this.preco = preco;
+        return idMercado;
     }
 
-    public String getsLocal() {
-
-        return sLocal;
-    }
-
-    public void setsLocal(String sLocal) {
-        this.sLocal = sLocal;
+    public void setIdMercado(long idMercado) {
+        this.idMercado = idMercado;
     }
 
     public double getPreco() {
@@ -55,33 +59,46 @@ public class Produto implements Serializable {
      * Seta o codigo do produto
      * @param id Codigo do produto
      */
-    public void setIdProduto( long id ){
-        this.idProduto= id;
+    public void setId(long id) {
+        this.id = id;
     }
-    public long getIdProduto(){
-        return this.idProduto;
+
+    public long getId() {
+        return this.id;
     }
 
     /**
      * Seta o nome do produto
      * @param nome Nome do produto
-     */public void setsNome( String nome ){
-        this.sNome= nome;
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getsNome(){
-        return this.sNome;
+    public String getNome() {
+        return this.nome;
     }
 
     public Produto() {}
-    public Produto( long id, String nome,double val ){
-        this.sNome= nome;
-        this.idProduto= id;
+
+    public Produto(long id, String nome, double val, String codbar) {
+        this.nome = nome;
+        this.id = id;
         this.preco=val;
+        this.codbar = codbar;
     }
     @Override
     public String toString()
     {
-        return this.sNome;
+        return this.nome;
     }
+
+    public void setCodbar(String codbar) {
+        this.nome = codbar;
+    }
+
+    public String getCodbar() {
+        return this.codbar;
+    }
+
 }

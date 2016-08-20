@@ -1,32 +1,46 @@
 package culik.br.com.listacompra;
 
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.widget.Toolbar;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import culik.br.com.listacompra.fragment.ListaCompraDetalheFragment;
 import culik.br.com.listacompra.fragment.ListaCompraFragment;
 import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.ListaProduto;
+import culik.br.com.listacompra.utils.utils.BaseActivity;
 
 /**
  * Created by LUIZ on 11/05/2016.
  */
-public class MainActivity extends Activity implements ListaCompraFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity implements ListaCompraFragment.OnFragmentInteractionListener {
+
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ListaCompraFragment e = new ListaCompraFragment();
-       // ArrayList<Produto> pr;
-        // ArrayList<ListaCompra> lc ;
         super.onCreate(savedInstanceState);
+        ListaCompraFragment e = new ListaCompraFragment();
+        // ArrayList<Produto> pr;
+        // ArrayList<ListaCompra> lc ;
+
         //ProdutoDataSource p = new ProdutoDataSource(this);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setActionBar(toolbar);
+        setUpToolbar();
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load
+        // titles
+        // from
+        // strings.xml
+
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);// load icons from
+        set(navMenuTitles, navMenuIcons);
         /*
         p.open();
         pr = p.getAllProduto();
@@ -57,7 +71,7 @@ public class MainActivity extends Activity implements ListaCompraFragment.OnFrag
 
         ListaCompraFragment listaCompraFragment = new ListaCompraFragment();
 
-        FragmentManager fragmentManager =  getFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -66,7 +80,7 @@ public class MainActivity extends Activity implements ListaCompraFragment.OnFrag
         if (findViewById(R.id.framelayout_right) != null) {
             boolean mTwoPane = true;
             ListaProduto pro = new ListaProduto();
-       
+
 
             Bundle bundle = new Bundle();
             bundle.putSerializable("compra", pro);
@@ -134,4 +148,13 @@ public class MainActivity extends Activity implements ListaCompraFragment.OnFrag
             super.onBackPressed();
         }
     }
+
+    private void setUpToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+    }
+
+
 }

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-<include
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
         android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"
+            layout="@layout/tool_bar_v7"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-
         />
     <FrameLayout
     android:id="@+id/framelayout_left"
@@ -16,8 +21,17 @@
     android:layout_height="match_parent"   >
 
 </FrameLayout>
+    </FrameLayout>
 
 
-
-
-</LinearLayout>
+    <!-- The navigation drawer -->
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="#e5e5e5"
+        android:dividerHeight="1dp"
+        android:background="#d6d6d6" />
+</android.support.v4.widget.DrawerLayout>

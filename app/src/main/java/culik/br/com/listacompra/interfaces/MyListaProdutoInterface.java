@@ -5,6 +5,7 @@ package culik.br.com.listacompra.interfaces;
  */
 
 import culik.br.com.listacompra.utils.model.ListaProdutos;
+import culik.br.com.listacompra.utils.model.LocalMercados;
 import culik.br.com.listacompra.utils.model.Produto;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -27,5 +28,9 @@ public interface MyListaProdutoInterface {
 
     @POST("insereprodutos")
     Call<ListaProdutos> enviaProdutos(@Body ListaProdutos p);
+
+
+    @GET("mercados")
+    Call<LocalMercados> pegaMercados();
 
 }

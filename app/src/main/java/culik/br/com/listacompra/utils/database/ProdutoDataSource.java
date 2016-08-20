@@ -19,7 +19,7 @@ public class ProdutoDataSource {
     private final MySQLiteHelper dbHelper;
 
     private final String[] allColumns = {MySQLiteHelper.COLUMN_IDPRODUTO,
-            MySQLiteHelper.COLUMN_SNOME,MySQLiteHelper.COLUMN_PRECO};
+            MySQLiteHelper.COLUMN_SNOME, MySQLiteHelper.COLUMN_LOCAL, MySQLiteHelper.COLUMN_PRECO, MySQLiteHelper.COLUMN_CODBAR};
 
     public ProdutoDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -47,13 +47,15 @@ public class ProdutoDataSource {
 
     public void insereProduto(Produto p) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_SNOME, p.getsNome());
+        values.put(MySQLiteHelper.COLUMN_SNOME, p.getNome());
 
-        if (!p.getsLocal().isEmpty())
-            values.put(MySQLiteHelper.COLUMN_LOCAL, p.getsLocal());
+        if (p.getIdMercado() > 0)
+            values.put(MySQLiteHelper.COLUMN_LOCAL, p.getIdMercado());
 
         if (p.getPreco() > 0)
             values.put(MySQLiteHelper.COLUMN_PRECO, p.getPreco());
+
+        values.put(MySQLiteHelper.COLUMN_CODBAR, p.getCodbar());
 
         database.insert(MySQLiteHelper.TABLE_PRODUTO, null,
                 values);
@@ -87,7 +89,7 @@ public class ProdutoDataSource {
     }
 
     private Produto cursorToProduto(Cursor cursor) {
-        return new Produto(cursor.getLong(0), cursor.getString(1),cursor.getDouble(2));
+        return new Produto(cursor.getLong(0), cursor.getString(1), cursor.getLong(2), cursor.getDouble(3), cursor.getString(4));
     }
 
 

@@ -11,5 +11,8 @@
     <item android:id="@+id/menuEnviarEmail"
         android:title="Enviar Email" />        
     <item android:id="@+id/menuEnviarWhatsApp"
-        android:title="Enviar Whats App" />                
+        android:title="Enviar Whats App" />
+    <item
+        android:id="@+id/menuEnviarFaceBook"
+        android:title="Enviar FaceBook" />
 </menu>

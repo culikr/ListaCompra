@@ -91,9 +91,9 @@ public class ListaProdutoAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.text1.setText(  Long.toString(listaCompra.get(position).getIdProduto()));
+        holder.text1.setText(Long.toString(listaCompra.get(position).getId()));
 //        holder.text2.setText((int) listaCompra.get(position).getIdtime());
-        holder.text2.setText( listaCompra.get(position).getsNome());
+        holder.text2.setText(listaCompra.get(position).getNome());
 
         return convertView;
     }

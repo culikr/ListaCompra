@@ -2,4 +2,9 @@
 <resources>
     <string name="envia_mercado_automatico">Envia Mercado Automatico</string>
     <string name="envia_produto_automatico">Envia Produto Automatico</string>
+    <string name="editar">Editar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="codigo_de_barras">Codigo de barras</string>
+    <string name="endereco">Endereco</string>
+    <string name="procura">Procura</string>
 </resources>

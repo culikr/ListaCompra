@@ -9,13 +9,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import culik.br.com.listacompra.interfaces.MyListaProdutoInterface;
+import culik.br.com.listacompra.interfaces.MyMapsInterface;
 import culik.br.com.listacompra.utils.model.Config;
 import culik.br.com.listacompra.utils.utils.LoggingInteceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+import retrofit2.converter.jackson.JacksonConverterFactory;
 /**
  * Created by LUIZ on 10/06/2016.
  */
@@ -24,6 +25,7 @@ public class FaceApplication extends Application {
     private SharedPreferences mSharedPreferences;
     private MyListaProdutoInterface serviceProduto;
     private static Context mContext;
+    private MyMapsInterface serviceMaps;
 
 
     @Override
@@ -41,13 +43,20 @@ public class FaceApplication extends Application {
         OkHttpClient client2 = new OkHttpClient.Builder().addInterceptor( logging).build();
         Gson gson = new GsonBuilder().create();
 
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.25.9:8080/ListaProdutos/rest/produto/")
+                .baseUrl("http://culik.ddns.net:8080/ListaProdutos/rest/produto/")
+                .addConverterFactory(JacksonConverterFactory.create())
+                .client(client2)
+                .build();
+        Retrofit retro = new Retrofit.Builder()
+                .baseUrl("https://maps.googleapis.com")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client2)
                 .build();
 
         serviceProduto = retrofit.create(MyListaProdutoInterface.class);
+        serviceMaps = retro.create(MyMapsInterface.class);
 
     }
 
@@ -89,6 +98,10 @@ public class FaceApplication extends Application {
 
     public  MyListaProdutoInterface getService(){
         return serviceProduto;
+    }
+
+    public MyMapsInterface getServiceMaps() {
+        return serviceMaps;
     }
     public static Context getContext(){
         return mContext;

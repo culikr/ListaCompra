@@ -1,8 +1,8 @@
 package culik.br.com.listacompra.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -56,7 +56,7 @@ public class Lista_compra_adiciona_produto extends Activity {
 
         Produto c = (Produto) sp.getSelectedItem();
         String quant = edQuant.getText().toString();
-        ListaProduto lista = new ListaProduto(c.getIdProduto(),listaCompra.getIdLista(),Double.valueOf(quant),"");
+        ListaProduto lista = new ListaProduto(c.getId(), listaCompra.getIdLista(), Double.valueOf(quant), "");
         Intent i = new Intent();
         i.putExtra("lista",lista);
         if ( v.getId() == R.id.lista_produto_salva_continua)

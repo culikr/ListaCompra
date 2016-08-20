@@ -14,17 +14,20 @@ import com.facebook.login.widget.LoginButton;
 
 import culik.br.com.listacompra.utils.utils.DetectaConexao;
 import culik.br.com.listacompra.utils.utils.DialogoAlerta;
+import culik.br.com.listacompra.utils.utils.FbManager;
 
 public class Login extends Activity {
 
     private CallbackManager callbackManager;
     private final DialogoAlerta alerta = new DialogoAlerta();
+    private FbManager fb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         DetectaConexao cd = new DetectaConexao(this);
+
         Boolean temInternet = cd.isConnectingToInternet();
         if (!temInternet) {
             alerta.showAlertDialog(Login.this);
@@ -32,6 +35,7 @@ public class Login extends Activity {
         }
 
         callbackManager = CallbackManager.Factory.create();
+        //   fb = new FbManager(this,callbackManager);
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken == null) {
 

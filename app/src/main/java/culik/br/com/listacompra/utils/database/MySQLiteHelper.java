@@ -29,6 +29,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DQUANT="dquant";
     public static final String COLUMN_LOCAL="local";
     public static final String COLUMN_PRECO="preco";
+    public static final String COLUMN_CODBAR = "codbar";
     // tabela mercado
     public static final String COLUMN_LAT="lat";
     public static final String COLUMN_LGN="lgn";
@@ -39,14 +40,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "listaprod.db";
 
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     // Database creation sql statement
     private static final String DATABASE_CREATE_PRODUTO = "create table "
             + TABLE_PRODUTO + "(" + COLUMN_IDPRODUTO
             + " integer primary key autoincrement, " + COLUMN_LOCAL
-            + " text,  " + COLUMN_PRECO
-            + " double, " + COLUMN_SNOME
+            + " integer,  " + COLUMN_PRECO
+            + " double, " + COLUMN_CODBAR
+            + " integer,  " + COLUMN_SNOME            
             + " text not null);";
 
     private static final String DATABASE_CREATE_LISTA_COMPRA = "create table "

@@ -34,4 +34,34 @@
     <string name="title_listacompra_detail">listacompra Detail</string>
     <string name="envia_mercado_automatico">Envia Mercado Automatico</string>
     <string name="envia_produto_automatico">Envia Produto Automatico</string>
+
+    <string-array name="nav_drawer_items">
+        <item>Sobre</item>
+        <item>Configuraçao</item>
+        <item>Mercados</item>
+
+        <!-- <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
+        <item>Sixth</item> -->
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/button_info_icon</item>
+        <item>@drawable/settings_icon</item>
+        <item>@drawable/cart_icon</item>
+        <!--
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        -->
+
+    </array>
+    <string name="title_activity_cadastra_mercado">Map</string>
+    <string name="editar">Editar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="codigo_de_barras">Codigo de barras</string>
+    <string name="endereco">Endereco</string>
+    <string name="procura">Procura</string>
 </resources>
