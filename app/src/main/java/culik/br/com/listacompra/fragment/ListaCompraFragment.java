@@ -145,7 +145,7 @@ public class ListaCompraFragment extends Fragment {
                 i.putExtra("posicao", 0);
                 i.putExtra("ledicao",0);
 
-                getActivity().startActivityForResult(i, CADASTRAR_LISTA);
+                startActivityForResult(i, CADASTRAR_LISTA);
                 return true;
             case R.id.about:
                 i = new Intent(getActivity(), ActivityAbout.class);

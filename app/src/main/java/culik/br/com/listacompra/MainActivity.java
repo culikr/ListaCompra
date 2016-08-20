@@ -3,6 +3,7 @@ package culik.br.com.listacompra;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -156,5 +157,10 @@ public class MainActivity extends BaseActivity implements ListaCompraFragment.On
         }
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Override this method in the activity that hosts the Fragment and call super
+        // in order to receive the result inside onActivityResult from the fragment.
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
