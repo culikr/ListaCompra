@@ -22,10 +22,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,6 +127,8 @@ public class CadastraMercado extends FragmentActivity implements OnMapReadyCallb
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
+
+
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -176,6 +181,7 @@ public class CadastraMercado extends FragmentActivity implements OnMapReadyCallb
         pr.insereProduto(c);
         */
         Mercados c = new Mercados(lat, lgn, edNome.getText().toString());
+        mds.insereMercados(c);
         Intent i = new Intent();
         i.putExtra("lista", c);
         setResult(RESULT_OK, i);
@@ -186,7 +192,9 @@ public class CadastraMercado extends FragmentActivity implements OnMapReadyCallb
     public void onLocationChanged(Location location) {
         lat = (location.getLatitude());
         lgn = (location.getLongitude());
-        ;
+        LatLng mLoc = new LatLng(lat,lgn);
+        mMap.addMarker(new MarkerOptions().position(mLoc).title("Local Atual"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mLoc));
     }
 
     @Override

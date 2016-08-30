@@ -53,7 +53,7 @@ public class ListaMercado extends Activity {
             case R.id.novo: {
                 Intent i = new Intent(this, CadastraMercado.class);
                 startActivityForResult(i, TELA_PRODUTO);
-                ///     lista=pd.getAllProduto();
+                lista=pd.getAllMercados();
                 adap.updateResults(lista);
                 break;
             }

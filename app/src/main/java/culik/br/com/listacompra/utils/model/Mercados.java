@@ -77,7 +77,7 @@ public class Mercados implements Serializable {
     }
 
     public Mercados( double lat, double lgn, String nome) {
-        this.id = id;
+
         this.lat = lat;
         this.lgn = lgn;
         this.nome = nome;
