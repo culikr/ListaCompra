@@ -81,15 +81,16 @@ public class ListaMercado extends Activity {
                 }
         }
         catch ( Exception e ) {
-            Log.e("Login", e.toString());
+            Log.d("Login", e.toString());
+
         }
     }
 
     private void atualizaListaCompra() {
-        pd.open();
+      //  pd.open();
 
         ((ListaProdutoAdapter) list.getAdapter()).notifyDataSetChanged();
-        pd.close();
+    //    pd.close();
     }
 
 
