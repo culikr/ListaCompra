@@ -27,12 +27,17 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         DetectaConexao cd = new DetectaConexao(this);
+try {
+    Boolean temInternet = cd.isConnectingToInternet();
+    if (!temInternet) {
+        alerta.showAlertDialog(Login.this);
+        return;
+    }
+}
+catch (Exception e){
+    Log.d("Login",e.toString());
 
-        Boolean temInternet = cd.isConnectingToInternet();
-        if (!temInternet) {
-            alerta.showAlertDialog(Login.this);
-            return;
-        }
+}
 
         callbackManager = CallbackManager.Factory.create();
         //   fb = new FbManager(this,callbackManager);

@@ -1,8 +1,8 @@
 package culik.br.com.listacompra.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,20 +20,22 @@ import culik.br.com.listacompra.utils.model.ListaCompra;
 import culik.br.com.listacompra.utils.model.Mercados;
 
 public class Cadastra_Lista extends Activity {
-    private ListaCompraDataSource pr ;
-    @BindView(R.id.edNome) 
-     EditText edNome;
-    @BindView(R.id.edTelefone) 
-     EditText edTelefone;
-    @BindView(R.id.edEmail) 
+    private ListaCompraDataSource pr;
+    @BindView(R.id.edNome)
+    EditText edNome;
+    @BindView(R.id.edTelefone)
+    EditText edTelefone;
+    @BindView(R.id.edEmail)
     EditText edEmail;
-    @BindView(R.id.edMensagem) 
-     EditText edMensagem;
-    @BindView(R.id.spinner) Spinner sp;
-    private int posicao ;
+    @BindView(R.id.edMensagem)
+    EditText edMensagem;
+    @BindView(R.id.spinner)
+    Spinner sp;
+    private int posicao;
     private int lEdicao = 0;
     private ArrayList<Mercados> lc;
     private MercadoDataSource mc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -55,10 +57,9 @@ public class Cadastra_Lista extends Activity {
         pr.open();
 
         ListaCompra listaCompraSelecionado = (ListaCompra) this.getIntent().getSerializableExtra("lista");
-        posicao = this.getIntent().getIntExtra("posicao",-1);
-        lEdicao = this.getIntent().getIntExtra("ledicao",-1);
-        if (listaCompraSelecionado != null)
-        {
+        posicao = this.getIntent().getIntExtra("posicao", -1);
+        lEdicao = this.getIntent().getIntExtra("ledicao", -1);
+        if (listaCompraSelecionado != null) {
             edNome.setText(listaCompraSelecionado.getsNome());
             edEmail.setText(listaCompraSelecionado.getsEmail());
             edTelefone.setText(listaCompraSelecionado.getsTelefone());
@@ -70,22 +71,22 @@ public class Cadastra_Lista extends Activity {
 
     }
 
-    public void editarListaCompra( View v){
+    public void editarListaCompra(View v) {
         ListaCompra lista;
         String Nome = edNome.getText().toString();
         String Telefone = edTelefone.getText().toString();
-        String Email=edEmail.getText().toString();
+        String Email = edEmail.getText().toString();
         String mensagem = edMensagem.getText().toString();
         Mercados mer = (Mercados) sp.getSelectedItem();
-        lista = new ListaCompra(Nome,"",Email,Telefone,mensagem,mer.getId());
+        lista = new ListaCompra(Nome, "", Email, Telefone, mensagem, mer.getId());
         if (lEdicao == 1)
             pr.atualizaListaCompra(lista);
         else
-           pr.insereCompra(lista);
+            pr.insereCompra(lista);
         Intent i = new Intent();
-        i.putExtra("lista",lista);
-        i.putExtra("posicao",posicao);
-        setResult(RESULT_OK,i);
+        i.putExtra("lista", lista);
+        i.putExtra("posicao", posicao);
+        setResult(RESULT_OK, i);
         finish();
 
     }
@@ -96,12 +97,12 @@ public class Cadastra_Lista extends Activity {
         super.onBackPressed();
     }
 
-    public void cancelarEdicao(View v){
+    public void cancelarEdicao(View v) {
         cancelarEdicao();
     }
 
-    private void cancelarEdicao(){
-        Toast.makeText(this,"Edicao cancelada!", Toast.LENGTH_SHORT).show();
+    private void cancelarEdicao() {
+        Toast.makeText(this, "Edicao cancelada!", Toast.LENGTH_SHORT).show();
         finish();
     }
 

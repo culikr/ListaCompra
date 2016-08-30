@@ -31,9 +31,7 @@ public class Cadastro_Produto extends Activity {
 
     private EditText te4;
     private Spinner sp;
-    private MercadoDataSource mc;
-    private ArrayList<Mercados> lc;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,12 +42,12 @@ public class Cadastro_Produto extends Activity {
         //EditText te3 = (EditText) findViewById(R.id.editText3);
         te4 = (EditText) findViewById(R.id.editText4);
         sp = (Spinner) findViewById(R.id.spinner);
-        mc = new MercadoDataSource(this);
+        MercadoDataSource mc = new MercadoDataSource(this);
         mc.open();
 
-        lc = mc.getAllMercados();
+        ArrayList<Mercados> lc = mc.getAllMercados();
         mc.close();
-        ArrayAdapter locationAdapter = new ArrayAdapter(this, R.layout.spinner, lc);
+        ArrayAdapter<Mercados> locationAdapter = new ArrayAdapter<>(this, R.layout.spinner, lc);
         sp.setAdapter(locationAdapter);
 
         sp.setFocusable(true);
@@ -141,7 +139,9 @@ public class Cadastro_Produto extends Activity {
             if (requestCode == REQUISITAR_CODBAR) {
                 if (resultCode == Activity.RESULT_OK) {
                     //                  EditText te = (EditText) findViewById(R.id.editText4);
-                    te4.setText(data.getStringExtra("nome").toString());
+                    te4.setText(data.getStringExtra("nome"));
+                    Log.e("Codbar",data.getStringExtra("nome"));
+
 
                 }
 

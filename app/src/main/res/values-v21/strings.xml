@@ -8,4 +8,9 @@
     <string name="endereco">Endereco</string>
     <string name="procura">Procura</string>
     <string name="mercados">Mercado</string>
+    <string name="gps_usa_local_atual">GPS Usa Local Atual</string>
+    <string name="envia_email">Envia Email</string>
+    <string name="envia_whats">Envia Whats</string>
+    <string name="envia_sms">Envia Sms</string>
+    <string name="usa_facebook">Usa Facebook</string>
 </resources>

@@ -1,12 +1,12 @@
 package culik.br.com.listacompra.ui;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.widget.Toolbar;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,6 +14,7 @@ import culik.br.com.listacompra.FaceApplication;
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.model.Config;
 
+@SuppressWarnings("ALL")
 public class Configuracao extends Activity {
     @BindView(R.id.checkBox)
     CheckBox check;
@@ -27,6 +28,8 @@ public class Configuracao extends Activity {
     CheckBox check5;
     @BindView(R.id.checkBox6)
     CheckBox check6;
+    @BindView(R.id.checkBox7)
+    CheckBox check7;
     @BindView(R.id.editText5)
     EditText edit5;
     @BindView(R.id.editText6)
@@ -48,6 +51,7 @@ public class Configuracao extends Activity {
         check4.setChecked(c.isSendSms());
         check5.setChecked(c.isSendProdutoAuto());
         check6.setChecked(c.isSendMercadoAutop());
+        check7.setChecked(c.isUseGPSLocalAtual());
         edit5.setText(c.getCabecSms());
         edit6.setText(c.getRodapeSMS());
         edit7.setText(c.getCabecEmail());
@@ -72,7 +76,7 @@ public class Configuracao extends Activity {
         if (id == R.id.salva_config) {
 
             Config c = new Config(check.isChecked(),check2.isChecked(),check3.isChecked(),check4.isChecked(),
-                    edit5.getText().toString(),edit6.getText().toString(),edit7.getText().toString(),edit8.getText().toString(),check5.isChecked(),check6.isChecked());
+                    edit5.getText().toString(),edit6.getText().toString(),edit7.getText().toString(),edit8.getText().toString(),check5.isChecked(),check6.isChecked(),check7.isChecked());
             ((FaceApplication)getApplication()).setConfig(c);
             return true;
         }

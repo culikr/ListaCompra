@@ -3,6 +3,7 @@ package culik.br.com.listacompra.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.ViewGroup;
 
@@ -17,12 +18,19 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class LeituraCodBarras extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
-    Integer response = 0;
-    public static final int PERMISSION_REQUEST_CAMERA = 1;
+    // --Commented out by Inspection (21/08/2016 01:39):Integer response = 0;
+    // --Commented out by Inspection (21/08/2016 01:39):public static final int PERMISSION_REQUEST_CAMERA = 1;
+    public static final String TAG = "LeituraCodBarras";
 
+    /**
+     * Id to identify a camera permission request.
+     */
+    private static final int REQUEST_CAMERA = 0;
     @Override
 
     public void onCreate(Bundle state) {
+
+
         super.onCreate(state);
         setContentView(R.layout.activity_scanner);
 
@@ -59,7 +67,13 @@ public class LeituraCodBarras extends Activity implements ZXingScannerView.Resul
         data.putExtra("name", rawResult.getText());
 
         setResult(RESULT_OK, data);
-
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mScannerView.resumeCameraPreview(LeituraCodBarras.this);
+            }
+        }, 2000);
         finish();
     }
 
@@ -72,5 +86,7 @@ public class LeituraCodBarras extends Activity implements ZXingScannerView.Resul
 
 
     }*/
+
+
 
 }

@@ -14,6 +14,16 @@ public class Config  implements Serializable {
     private boolean sendProdutoAuto;
     private boolean sendMercadoAutop;
 
+    public boolean isUseGPSLocalAtual() {
+        return useGPSLocalAtual;
+    }
+
+    public void setUseGPSLocalAtual(boolean useGPSLocalAtual) {
+        this.useGPSLocalAtual = useGPSLocalAtual;
+    }
+
+    private boolean useGPSLocalAtual;
+
 
     private String  cabecSms;
     private String  rodapeSMS;
@@ -22,7 +32,7 @@ public class Config  implements Serializable {
 
 
     public Config(boolean useFaceBook, boolean sendEmail, boolean sendWhats, boolean sendSms, String cabecSms, String rodapeSMS, String cabecEmail, String rodapeEmail,boolean sendProdutoAuto,
-            boolean sendMercadoAutop) {
+            boolean sendMercadoAutop,boolean useGPSLocalAtual) {
         this.useFaceBook = useFaceBook;
         this.sendEmail = sendEmail;
         this.sendWhats = sendWhats;
@@ -33,6 +43,7 @@ public class Config  implements Serializable {
         this.rodapeEmail = rodapeEmail;
         this.sendProdutoAuto = sendProdutoAuto;
         this.sendMercadoAutop = sendMercadoAutop;
+        this.useGPSLocalAtual = useGPSLocalAtual;
     }
 
     public String getRodapeSMS() {

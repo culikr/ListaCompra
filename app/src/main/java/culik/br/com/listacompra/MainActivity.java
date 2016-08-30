@@ -1,9 +1,12 @@
 package culik.br.com.listacompra;
 
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -30,7 +33,24 @@ public class MainActivity extends BaseActivity implements ListaCompraFragment.On
         ListaCompraFragment e = new ListaCompraFragment();
         // ArrayList<Produto> pr;
         // ArrayList<ListaCompra> lc ;
+   /*     try {
+            if (Build.VERSION.SDK_INT >= 23) {
+                String[] permissoes = new String[]{
+                        android.Manifest.permission.CAMERA,
+                        android.Manifest.permission.INTERNET,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        android.Manifest.permission.ACCESS_NETWORK_STATE,
 
+                };
+                PermissionUtils.validate(this, 0, permissoes);
+            }
+        }
+        catch ( Exception e1){
+            Log.d("login",e1.toString());
+        }
+        */
         //ProdutoDataSource p = new ProdutoDataSource(this);
         setContentView(R.layout.activity_main);
         setUpToolbar();
@@ -162,5 +182,36 @@ public class MainActivity extends BaseActivity implements ListaCompraFragment.On
         // Override this method in the activity that hosts the Fragment and call super
         // in order to receive the result inside onActivityResult from the fragment.
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        for (int result : grantResults) {
+            if (result == PackageManager.PERMISSION_DENIED) {
+                // Alguma permissÃ£o foi negada, agora Ã© com vocÃª :-)
+                alertAndFinish();
+                return;
+            }
+        }
+
+        // Se chegou aqui estÃ¡ OK :-)
+    }
+
+    private void alertAndFinish() {
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.app_name).setMessage("Para utilizar este aplicativo, vocÃª precisa aceitar as permissÃµes.");
+            // Add the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                }
+            });
+            android.app.AlertDialog dialog = builder.create();
+            dialog.show();
+
+        }
     }
 }

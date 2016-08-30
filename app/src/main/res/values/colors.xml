@@ -11,4 +11,5 @@
     <color name="ColorPrimary">#FF5722</color>
     <color name="ColorPrimaryDark">#E64A19</color>
     <color name="purple_vivo">#a0009f</color>
+    <color name="actionbar_opacity">#33000000</color>
 </resources>

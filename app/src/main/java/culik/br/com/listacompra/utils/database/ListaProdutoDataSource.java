@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -78,7 +79,10 @@ public class ListaProdutoDataSource {
     }
 
     public ArrayList<ListaProduto> getAllListaProduto( long idLista ) {
+        ListaProduto comment = null;
         ArrayList<ListaProduto> comments = new ArrayList<>();
+        try{
+
         String query = "Select a."+ MySQLiteHelper.COLUMN_IDPRODUTO+",a."+
                 MySQLiteHelper.COLUMN_IDLISTA+",a."+ MySQLiteHelper.COLUMN_IDITEM+",a."+
                 MySQLiteHelper.COLUMN_DQUANT+",b." +MySQLiteHelper.COLUMN_SNOME +
@@ -92,12 +96,17 @@ public class ListaProdutoDataSource {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            ListaProduto comment = cursorToListaProduto(cursor);
+            comment = cursorToListaProduto(cursor);
             comments.add(comment);
             cursor.moveToNext();
         }
         // make sure to close the cursor
-        cursor.close();
+        cursor.close();}
+            catch ( Exception e1){
+                Log.d("login", e1.toString());
+
+
+            }
         return comments;
     }
     public long insereLista(ListaProduto c){

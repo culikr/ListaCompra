@@ -57,12 +57,12 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        navDrawerItems = new ArrayList<NavDrawerItem>();
+        navDrawerItems = new ArrayList<>();
 
         // adding nav drawer items
         if (navMenuIcons == null) {
-            for (int i = 0; i < navMenuTitles.length; i++) {
-                navDrawerItems.add(new NavDrawerItem(navMenuTitles[i]));
+            for (String navMenuTitle : navMenuTitles) {
+                navDrawerItems.add(new NavDrawerItem(navMenuTitle));
             }
         } else {
             for (int i = 0; i < navMenuTitles.length; i++) {

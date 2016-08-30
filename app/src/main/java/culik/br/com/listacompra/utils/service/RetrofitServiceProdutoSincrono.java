@@ -2,6 +2,8 @@ package culik.br.com.listacompra.utils.service;
 
 import android.app.Application;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import culik.br.com.listacompra.FaceApplication;
@@ -31,6 +33,13 @@ public class RetrofitServiceProdutoSincrono {
         return prod;
     }
 
+    public JSONObject procuraEndereco(String address) throws IOException {
+        JSONObject ret = null;
+        Call<JSONObject> call = servMap.procuraEnderecos(address,"AIzaSyBXu8WS6ycWI9e4oNsGM-xpnfDg9zofA-k");
+        ret = call.execute().body();
+
+        return ret;
+    }
 
 }
 

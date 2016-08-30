@@ -171,7 +171,7 @@ public class ProdutoProvider extends ContentProvider {
     private void checkColumns(String[] projection) {
         String[] available = { MySQLiteHelper.COLUMN_IDPRODUTO,
                 MySQLiteHelper.COLUMN_LOCAL, MySQLiteHelper.COLUMN_PRECO,
-                MySQLiteHelper.COLUMN_SNOME };
+                MySQLiteHelper.COLUMN_SNOME ,MySQLiteHelper.COLUMN_CODBAR};
         if (projection != null) {
             HashSet<String> requestedColumns = new HashSet<String>(
                     Arrays.asList(projection));

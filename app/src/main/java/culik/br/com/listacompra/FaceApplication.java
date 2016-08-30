@@ -3,7 +3,6 @@ package culik.br.com.listacompra;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.multidex.MultiDex;
 
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
@@ -68,14 +67,15 @@ public class FaceApplication extends Application {
             boolean sendEmail = mSharedPreferences.getBoolean("sendEmail", true);
             boolean sendWhats = mSharedPreferences.getBoolean("sendWhats", true);
             boolean sendSms = mSharedPreferences.getBoolean("sendSms", true);
-            String  cabecSms =  mSharedPreferences.getString(  "sendSms",    "Por favor traga os seguintes items do mercado");
+            String  cabecSms =  mSharedPreferences.getString(  "sendCabecSms",    "Por favor traga os seguintes items do mercado");
             String  rodapeSMS=  mSharedPreferences.getString(  "rodapeSMS"  , "Obrigado(a)");
             String  cabecEmail=  mSharedPreferences.getString( "cabecEmail", "Por favor traga os seguintes items do mercado");
             String  rodapeEmail=  mSharedPreferences.getString("rodapeEmail", "Obrigado(a)");
             boolean sendProdutoAuto  = mSharedPreferences.getBoolean("sendProdutoAuto",false);
             boolean sendMercadoAutop = mSharedPreferences.getBoolean("sendMercadoAutop",false);
+            boolean useGPSLocalAtual = mSharedPreferences.getBoolean("useGPSLocalAtual",false);
 
-            config = new Config(useFaceBook, sendEmail, sendWhats, sendSms,cabecSms,rodapeSMS,cabecEmail,rodapeEmail,sendProdutoAuto,sendMercadoAutop);
+            config = new Config(useFaceBook, sendEmail, sendWhats, sendSms,cabecSms,rodapeSMS,cabecEmail,rodapeEmail,sendProdutoAuto,sendMercadoAutop,useGPSLocalAtual);
         }
         return config;
     }
@@ -88,12 +88,13 @@ public class FaceApplication extends Application {
         e.putBoolean("sendEmail", config.isSendEmail());
         e.putBoolean("sendWhats", config.isSendWhats());
         e.putBoolean("sendSms", config.isSendSms());
-        e.putString("sendSms",    config.getCabecSms());
+        e.putString("sendCabecSms",    config.getCabecSms());
         e.putString("rodapeSMS"  ,config.getRodapeSMS());
         e.putString("cabecEmail", config.getCabecEmail());
         e.putString("rodapeEmail",config.getRodapeEmail());
         e.putBoolean("sendProdutoAuto",config.isSendProdutoAuto());
         e.putBoolean("sendMercadoAutop",config.isSendMercadoAutop());
+        e.putBoolean("useGPSLocalAtual",config.isUseGPSLocalAtual());
         e.commit();
 
     }

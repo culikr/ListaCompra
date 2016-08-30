@@ -15,9 +15,7 @@ import culik.br.com.listacompra.utils.model.ListaCompra;
  * Created by LUIZ on 03/05/2016.
  */
 public class ListaCompraDataSource {
-    private SQLiteDatabase database;
     private final MySQLiteHelper dbHelper;
-
     private final String[] allColumns = {MySQLiteHelper.COLUMN_IDLISTA,
             MySQLiteHelper.COLUMN_SNOME,
             MySQLiteHelper.COLUMN_DDATACAD,
@@ -26,6 +24,7 @@ public class ListaCompraDataSource {
             MySQLiteHelper.COLUMN_MENSAGEM,
             MySQLiteHelper.COLUMN_IDMERCADO
     };
+    private SQLiteDatabase database;
 
     public ListaCompraDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -35,7 +34,10 @@ public class ListaCompraDataSource {
         database = dbHelper.getWritableDatabase();
     }
 
-    public boolean isOpen() { return  dbHelper.getReadableDatabase().isOpen();}
+    public boolean isOpen() {
+        return dbHelper.getReadableDatabase().isOpen();
+    }
+
     public void close() {
         dbHelper.close();
     }
@@ -77,50 +79,49 @@ public class ListaCompraDataSource {
     }
 
     private ListaCompra cursorToListaCompra(Cursor cursor) {
-        return new ListaCompra(cursor.getLong(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getLong(6));
+        return new ListaCompra(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getLong(6));
     }
 
-    public long insereCompra(ListaCompra c){
+    public long insereCompra(ListaCompra c) {
         ContentValues co = new ContentValues();
 
-        co.put(MySQLiteHelper.COLUMN_SNOME      ,c.getsNome());
+        co.put(MySQLiteHelper.COLUMN_SNOME, c.getsNome());
 
         if (!c.getsTelefone().isEmpty())
-           co.put( MySQLiteHelper.COLUMN_TELEFONE  ,c.getsTelefone());
+            co.put(MySQLiteHelper.COLUMN_TELEFONE, c.getsTelefone());
 
         if (!c.getsEmail().isEmpty())
-           co.put(MySQLiteHelper.COLUMN_EMAIL    ,c.getsEmail());
+            co.put(MySQLiteHelper.COLUMN_EMAIL, c.getsEmail());
         if (!c.getdDataCad().isEmpty())
-        co.put( MySQLiteHelper.COLUMN_DDATACAD, c.getdDataCad());
+            co.put(MySQLiteHelper.COLUMN_DDATACAD, c.getdDataCad());
 
         if (!c.getsMensagem().isEmpty())
-            co.put( MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
-        co.put(MySQLiteHelper.COLUMN_IDMERCADO,c.getIdMercado());
+            co.put(MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
+        co.put(MySQLiteHelper.COLUMN_IDMERCADO, c.getIdMercado());
 
-        return database.insert(MySQLiteHelper.TABLE_LISTACOMPRA,null,co);
+        return database.insert(MySQLiteHelper.TABLE_LISTACOMPRA, null, co);
 
     }
 
-    public void atualizaListaCompra(ListaCompra c)
-    {
+    public void atualizaListaCompra(ListaCompra c) {
         ContentValues co = new ContentValues();
 
-        co.put(MySQLiteHelper.COLUMN_SNOME      ,c.getsNome());
-        co.put(MySQLiteHelper.COLUMN_IDLISTA,c.getIdLista());
+        co.put(MySQLiteHelper.COLUMN_SNOME, c.getsNome());
+        co.put(MySQLiteHelper.COLUMN_IDLISTA, c.getIdLista());
 
         if (!c.getsTelefone().isEmpty())
-            co.put( MySQLiteHelper.COLUMN_TELEFONE  ,c.getsTelefone());
+            co.put(MySQLiteHelper.COLUMN_TELEFONE, c.getsTelefone());
 
         if (!c.getsEmail().isEmpty())
-            co.put(MySQLiteHelper.COLUMN_EMAIL    ,c.getsEmail());
+            co.put(MySQLiteHelper.COLUMN_EMAIL, c.getsEmail());
         if (!c.getdDataCad().isEmpty())
-            co.put( MySQLiteHelper.COLUMN_DDATACAD, c.getdDataCad());
+            co.put(MySQLiteHelper.COLUMN_DDATACAD, c.getdDataCad());
 
         if (!c.getsMensagem().isEmpty())
-            co.put( MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
-        co.put(MySQLiteHelper.COLUMN_IDMERCADO,c.getIdMercado());
+            co.put(MySQLiteHelper.COLUMN_MENSAGEM, c.getsMensagem());
+        co.put(MySQLiteHelper.COLUMN_IDMERCADO, c.getIdMercado());
 
-        database.update(MySQLiteHelper.TABLE_LISTACOMPRA,co, MySQLiteHelper.COLUMN_IDLISTA  + "=" + c.getIdLista(),null);
+        database.update(MySQLiteHelper.TABLE_LISTACOMPRA, co, MySQLiteHelper.COLUMN_IDLISTA + "=" + c.getIdLista(), null);
 
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import culik.br.com.listacompra.utils.service.RetrofitServiceProdutoSincrono;
 public class SplashScreen extends Activity {
 
 
-    private static int SPLASH_TIME_OUT = 5000;
+    // --Commented out by Inspection (21/08/2016 01:40):private static int SPLASH_TIME_OUT = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,8 +158,19 @@ public class SplashScreen extends Activity {
 
             }
         */
-            p.close();
+            try {
+                p.close();
+            }
+            catch (Exception e ) {
+                Log.d("Login", e.toString());
+            }
+            try {
             m.close();
+            }
+            catch (Exception e ) {
+                Log.d("Login", e.toString());
+            }
+
 
             return null;
         }

@@ -12,7 +12,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="fill_parent"
@@ -45,16 +46,40 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="440dp"
-            tools:context="culik.br.com.listacompra.ui.CadastraMercado" />
+            android:layout_height="367dp"
+            tools:context="culik.br.com.listacompra.ui.CadastraMercado"
+            android:layout_weight="1.27" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/procura"
             android:id="@+id/btnProcura"
-            android:onClick="Procura"
+            android:onClick="ProcuraLocal"
             android:layout_gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:baselineAligned="false"
+            android:longClickable="false"
+            android:gravity="center_vertical|center|center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:id="@+id/btnCancela"
+            android:onClick="cancelarEdicao" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editar"
+            android:id="@+id/btnSalva"
+            android:onClick="editarProduto" />
     </LinearLayout>
-    /
+    </LinearLayout>
+
 </FrameLayout>
