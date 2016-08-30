@@ -3,6 +3,7 @@ package culik.br.com.listacompra.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ public class ListaMercado extends Activity {
     private ListView list;
     private ListaMercadoAdapter adap;
     private ArrayList<Mercados> lista;
-    private final static int TELA_PRODUTO = 5;
+    private final static int TELA_MERCADO = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class ListaMercado extends Activity {
         switch (item.getItemId()) {
             case R.id.novo: {
                 Intent i = new Intent(this, CadastraMercado.class);
-                startActivityForResult(i, TELA_PRODUTO);
+                startActivityForResult(i, TELA_MERCADO);
                 lista=pd.getAllMercados();
                 adap.updateResults(lista);
                 break;
@@ -68,15 +69,20 @@ public class ListaMercado extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == TELA_PRODUTO)
-            if (resultCode == Activity.RESULT_OK) {
-                //         adap.updateResults(pd.getAllProduto());
-                atualizaListaCompra();
+        try {
+            if (requestCode == TELA_MERCADO)
+                if (resultCode == Activity.RESULT_OK) {
+                    adap.updateResults(pd.getAllMercados());
+                    atualizaListaCompra();
 
-                Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Cadastro cancelado!", Toast.LENGTH_SHORT).show();
-            }
+                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Cadastro cancelado!", Toast.LENGTH_SHORT).show();
+                }
+        }
+        catch ( Exception e ) {
+            Log.e("Login", e.toString());
+        }
     }
 
     private void atualizaListaCompra() {
