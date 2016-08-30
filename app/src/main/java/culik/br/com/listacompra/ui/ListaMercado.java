@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import culik.br.com.listacompra.R;
 import culik.br.com.listacompra.utils.adapter.ListaMercadoAdapter;
-import culik.br.com.listacompra.utils.adapter.ListaProdutoAdapter;
 import culik.br.com.listacompra.utils.database.MercadoDataSource;
 import culik.br.com.listacompra.utils.model.Mercados;
 
@@ -77,10 +76,10 @@ public class ListaMercado extends Activity {
 
                     Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Cadastro cancelado!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Cadastro cancelado! ", Toast.LENGTH_SHORT).show();
                 }
         }
-        catch ( Exception e ) {
+        catch ( Exception e  ) {
             Log.d("Login", e.toString());
 
         }
@@ -89,7 +88,7 @@ public class ListaMercado extends Activity {
     private void atualizaListaCompra() {
       //  pd.open();
 
-        ((ListaProdutoAdapter) list.getAdapter()).notifyDataSetChanged();
+        ((ListaMercadoAdapter) list.getAdapter()).notifyDataSetChanged();
     //    pd.close();
     }
 
